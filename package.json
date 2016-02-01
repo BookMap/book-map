@@ -1,22 +1,29 @@
 {
-  "name": "bookshare",
+  "name": "book-map",
   "version": "1.0.0",
-  "description": "A booksharing app",
-  "main": "index.js",
+  "description": "A book-sharing app",
+  "main": "server.js",
   "scripts": {
+    "start": "node index.html",
     "test": "gulp"
+  },
+  "engines": {
+    "node": "5.5.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wmharvey/book-share.git"
+    "url": "git+https://github.com/BookMap/book-map.git"
   },
   "keywords": [
-    "Bookshare"
+    "book-share"
   ],
   "author": "Whitney, Jessica, Miles",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wmharvey/book-share/issues"
+    "url": "https://github.com/BookMap/book-map/issues"
   },
-  "homepage": "https://github.com/wmharvey/book-share#readme"
+  "homepage": "https://github.com/BookMap/book-map#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
