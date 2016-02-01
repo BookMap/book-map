@@ -5,3 +5,8 @@ http.createServer(function(request, response) {
  response.write("It's alive!");
  response.end();
 }).listen(process.env.PORT);
+
+const app = require('./app');
+
+//const mongoose = require( 'mongoose' );
+//TO-DO with mongooseConfig
