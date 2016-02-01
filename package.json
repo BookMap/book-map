@@ -1,0 +1,22 @@
+{
+  "name": "bookshare",
+  "version": "1.0.0",
+  "description": "A booksharing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmharvey/book-share.git"
+  },
+  "keywords": [
+    "Bookshare"
+  ],
+  "author": "Whitney, Jessica, Miles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wmharvey/book-share/issues"
+  },
+  "homepage": "https://github.com/wmharvey/book-share#readme"
+}
