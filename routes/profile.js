@@ -14,6 +14,7 @@ router.post('/addBook', (req, res, next) => {
     author: req.body.author
   })
   .then( book => {
+    console.log(req.user_id);
     if (!book) {
       var newBook = new Book({
         title: req.body.title,
