@@ -12,6 +12,7 @@ var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
 var search = require('./routes/search');
+var profile = require('./routes/profile');
 
 app.use( session({
 	secret: sekrit,
@@ -35,6 +36,7 @@ function auth( req, res, next ) {
 		});
 }
 
-app.use('/api', auth, search);
+app.use('/api/profile', auth, profile);
+app.use('/api/search', search);
 app.listen(process.env.PORT);
 //module.exports = app;

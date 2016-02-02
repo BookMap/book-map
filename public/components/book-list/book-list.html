@@ -5,10 +5,23 @@
 <p>List of All Books Available for Borrowing</p>
 
 <ul>
-    <li ng-repeat='book in books | filter: { type: typeFilter }'
-        ng-class='book.type'>
+    <li ng-repeat='book in books | filter: { title: typeFilter}'
+        ng-class='book.title'>
 
-        {{ $index + 1}}: <a ng-href='#/books/{{ book.id }}'>{{ book.name }} is a {{ book.type }} book.</a>
+        {{ $index + 1}}: <a ng-href='#/books/{{ book.id }}'>{{ book.title }}</a> by {{ book.author }}.</a>
+
+        <div class="detailsBtn">
+            <button data-ng-click=""
+            >
+                View Book Details</button>
+        </div>
+
     </li>
 
 </ul>
+
+
+<button class="btn btn-default"
+        data-ng-click="Day.addDay(Day,User);User.userAddDay='false';Day.getUserProfile(null); Day.getUserProfile(null); ">
+    Save This Day
+</button>
