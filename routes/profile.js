@@ -51,7 +51,7 @@ router.get('/lending', (req, res) => {
     res.send(books);
   })
   .catch( err => {
-    res.status(500).send(err);
+    res.status(500).send(err[0]);
   });
 });
 
@@ -63,8 +63,41 @@ router.get('/borrowing', (req, res) => {
     res.send(books);
   })
   .catch( err => {
-    res.status(500).send(err);
+    res.status(500).send(err[0]);
   });
 });
+
+router.delete('/delete', (req, res) => {
+  PhysicalBook.findOneAndRemove({
+    user_id: req.user_id,
+    book_id: req.body.book_id
+  })
+  .then( book => {
+    res.send(book);
+    return Book.findOne({ _id: req.body.book_id })
+  })
+  .then (book => {
+    book.availability.pull({user_id: req.user_id});
+    book.save();
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+});
+
+router.post('/about', (req, res) => {
+  User.findOneAndUpdate({_id: req.user_id}, {
+    about: req.body.about
+  }, {new: true})
+  .then( user => {
+    res.send(user);
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+});
+
+router.patch('')
+
 
 module.exports = router;

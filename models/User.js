@@ -13,7 +13,8 @@ const User = new Schema({
   email: {
     type: String,
     require: true
-  }
+  },
+  about: String
 }, {
 	timestamps: true,
 	strict: false // allow oauth ids and profiles
