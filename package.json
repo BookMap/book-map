@@ -29,6 +29,7 @@
     "express-session": "^1.13.0",
     "grant-express": "^3.5.5",
     "jsonwebtoken": "^5.5.4",
-    "mongoose": "^4.3.7"
+    "mongoose": "^4.3.7",
+    "mongoose-auto-increment": "^5.0.1"
   }
 }
