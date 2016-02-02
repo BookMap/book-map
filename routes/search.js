@@ -20,13 +20,20 @@ router.get('/', (req, res, next) => {
   }
   else {
     PhysicalBook.find({user_id: req.query.user})
-                .lean()
-                .exec( (err, books) => {
-                  if(err) {
-                    console.log(err);
-                    return res.status(500).send(err[0]);
-                  }
+                .then( books => {
+                  return Promise.all(
+                    books.map( book => {
+                      return Book.findOne({ _id: book.book_id})
+                                 .lean()
+                    })
+                  );
+                })
+                .then( (books) => {
                   res.send(books);
+                })
+                .catch(err => {
+                  console.log(err);
+                  res.status(500).send(err[0]);
                 });
   }
 });
