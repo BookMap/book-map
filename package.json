@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "eval $(cat .env) nodemon server.js",
+    "dev": "eval $(cat .env) nodemon app.js",
     "test": "eval $(cat .env) gulp"
   },
   "engines": {

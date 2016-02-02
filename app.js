@@ -18,11 +18,10 @@ app.use( session({
 	cookie: { secure: false }
 }));
 
+
 app.use(grant);
 app.use( express.static( publicPath ) );
 app.use('/login', login);
-
-
 
 
 function auth( req, res, next ) {

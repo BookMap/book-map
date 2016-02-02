@@ -1,0 +1,13 @@
+<p>List of Community Members</p>
+
+<div>
+    type: <input ng-model="typeFilter">
+</div>
+
+<ul>
+    <li ng-repeat='user in users | filter: { type: typeFilter }'
+        ng-class='user.type'>
+        {{ $index + 1}}: <a ng-href='#/users/{{ user.id }}'>{{ user.name }} is a {{ user.type }} type of community member.</a>
+    </li>
+</ul>
+
