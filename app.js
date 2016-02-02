@@ -6,9 +6,10 @@ var Grant = require('grant-express');
 var grantConfig = require('./grant');
 var grant = new Grant( grantConfig );
 var token = require('./lib/token');
+var search = require('./routes/search');
 var login = require('./routes/login');
 var publicPath = path.join( __dirname, 'public' );
-const session = require( 'express-session' );
+var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
 var search = require('./routes/search');
 

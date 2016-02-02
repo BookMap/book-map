@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const User = require('../models/User');
@@ -87,6 +88,5 @@ router.get('/borrowing', (req, res) => {
     res.status(500).send(err);
   });
 });
-
 
 module.exports = router;
