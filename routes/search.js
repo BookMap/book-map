@@ -7,7 +7,13 @@ router.use(bodyParser.json());
 
 //GET all books
 router.get('/search', (req, res, next) => {
-  res.send('API');
+  Book.find({}).lean().exec( (err, books) => {
+    if(err) {
+      console.log(err);
+      return res.status(500).send(err[0]);
+    }
+    res.send(books);
+  });
 });
 
 
@@ -31,18 +37,18 @@ router.post('/addBook', (req, res, next) => {
           console.log(err);
           return res.status(500).send(err[0]);
         }
-        res.status(200).send('Book saved!');
+        res.send(savedBook);
       });
     }
     else {
       var bookToUpdate = books[0];
       bookToUpdate.availability.push({user_id:req.body.user_id});
-      bookToUpdate.save( (err) => {
+      bookToUpdate.save( (err, savedBook) => {
         if (err) {
           console.log(err);
           return res.status(500).send(err[0]);
         }
-        res.status(200).send('Book saved!');
+        res.send(savedBook);
       })
     }
 
