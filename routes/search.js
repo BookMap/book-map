@@ -6,9 +6,10 @@ const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
 router.use(bodyParser.json());
+router.user(bodyParser.urlencoded());
 
 //GET all books
-router.get('/search', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Book.find({}).lean().exec( (err, books) => {
     if(err) {
       console.log(err);
@@ -17,8 +18,9 @@ router.get('/search', (req, res, next) => {
     res.send(books);
   });
 });
+
 //GET specific book
-router.get('/search/:book_id', (req, res, next) => {
+router.get('/:book_id', (req, res, next) => {
   Book.findById(req.params.book_id).lean().exec( (err, book) => {
     if (err) {
       console.log(err);
@@ -28,64 +30,7 @@ router.get('/search/:book_id', (req, res, next) => {
   })
 });
 
-//POST new book
-router.post('/addBook', (req, res, next) => {
-  Book.findOne({
-    title: req.body.title,
-    author: req.body.author
-  })
-  .then( book => {
-    if (!book) {
-      var newBook = new Book({
-        title: req.body.title,
-        author: req.body.author,
-        availability: [{user_id: req.user_id}]
-      });
-      return newBook.save();
-    } else {
-      book.availability.push({user_id:req.user_id});
-      return book.save();
-    }
-  })
-  .then( savedBook => {
-    var physicalBook = new PhysicalBook({
-      book_id: savedBook._id,
-      user_id: req.user_id,
-      borrower: 0
-    });
-    return physicalBook.save();
-  })
-  .then( (savedBook)=> {
-    res.send(savedBook);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
-  });
-});
-
-router.get('/lending', (req, res) => {
-  PhysicalBook.find({
-    user_id: req.user_id,
-    borrower: {$gt: 0}
-  })
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err);
-  });
-});
-
-router.get('/borrowing', (req, res) => {
-  PhysicalBook.find({
-    borrower: req.user_id,
-  })
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err);
-  });
-});
+//GET all books by specific user
+router.get('/')
 
 module.exports = router;
