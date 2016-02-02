@@ -6,6 +6,7 @@ const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
 router.use(bodyParser.json());
+router.user(bodyParser.urlencoded());
 
 //GET all books
 router.get('/search', (req, res, next) => {
@@ -17,6 +18,7 @@ router.get('/search', (req, res, next) => {
     res.send(books);
   });
 });
+
 //GET specific book
 router.get('/search/:book_id', (req, res, next) => {
   Book.findById(req.params.book_id).lean().exec( (err, book) => {
@@ -27,5 +29,8 @@ router.get('/search/:book_id', (req, res, next) => {
     res.send(book);
   })
 });
+
+//GET all books by specific user
+router.get('/')
 
 module.exports = router;

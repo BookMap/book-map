@@ -35,6 +35,7 @@ function auth( req, res, next ) {
 		});
 }
 
-app.use('/api', auth, search);
+app.use('/api/profile', auth, profile);
+app.use('/api', search);
 app.listen(process.env.PORT);
 //module.exports = app;
