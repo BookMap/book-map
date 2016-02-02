@@ -13,13 +13,13 @@ app.config( [ '$routeProvider', function( $routeProvider ) {
             controller: 'BookListCtrl'
         })
 
-        //.when('/users', {
-        //    templateUrl: 'templates/users.html',
-        //    // controller: 'StoreCtrl'
-        //})
+        .when('/users', {
+            templateUrl: 'components/user-list/user-list.html',
+            controller: 'UserCtrl'
+        })
 
-        //.otherwise({
-        //    redirectTo: '/books'
-        //});
+        .otherwise({
+            redirectTo: '/'
+        });
 
 }]);
