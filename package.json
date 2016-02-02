@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "eval $(cat .env) nodemon server.js",
+    "dev": "eval $(cat .env) nodemon app.js",
     "test": "eval $(cat .env) gulp"
   },
   "engines": {
@@ -25,10 +25,13 @@
   },
   "homepage": "https://github.com/BookMap/book-map#readme",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "grant-express": "^3.5.5",
     "jsonwebtoken": "^5.5.4",
-    "mongoose": "^4.3.7"
+    "mongoose": "^4.3.7",
+    "mongoose-auto-increment": "^5.0.1",
+    "request": "^2.69.0"
   }
 }
