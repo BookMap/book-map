@@ -15,7 +15,16 @@ router.get('/search', (req, res, next) => {
     res.send(books);
   });
 });
-
+//GET specific book
+router.get('/search/:book_id', (req, res, next) => {
+  Book.findById(req.params.book_id).lean().exec( (err, book) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err[0]);
+    }
+    res.send(book);
+  })
+});
 
 //POST new book
 router.post('/addBook', (req, res, next) => {
