@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 router.user(bodyParser.urlencoded());
 
 //GET all books
-router.get('/search', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Book.find({}).lean().exec( (err, books) => {
     if(err) {
       console.log(err);
@@ -20,7 +20,7 @@ router.get('/search', (req, res, next) => {
 });
 
 //GET specific book
-router.get('/search/:book_id', (req, res, next) => {
+router.get('/:book_id', (req, res, next) => {
   Book.findById(req.params.book_id).lean().exec( (err, book) => {
     if (err) {
       console.log(err);
