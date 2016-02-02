@@ -13,9 +13,13 @@ router.get('/search', (req, res, next) => {
 
 //POST new book
 router.post('/addBook', (req, res, next) => {
-  Book.find({}).lean().exec( (err, book) => {
+  Book.find({}, (err, books) => {
 
-    if(book.length === 0) {
+    books = books.filter(book => {
+      return (book.title === req.body.title && book.author === req.body.author);
+    });
+
+    if(books.length === 0) {
       var newBook = new Book({
         title: req.body.title,
         author: req.body.author,
@@ -29,6 +33,17 @@ router.post('/addBook', (req, res, next) => {
         }
         res.status(200).send('Book saved!');
       });
+    }
+    else {
+      var bookToUpdate = books[0];
+      bookToUpdate.availability.push({user_id:req.body.user_id});
+      bookToUpdate.save( (err) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send(err[0]);
+        }
+        res.status(200).send('Book saved!');
+      })
     }
 
   });//end of Book.find
