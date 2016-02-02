@@ -26,7 +26,6 @@ app.use('/login', login);
 function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
-      console.log(payload);
       next();
     })
 		.catch( err => {
@@ -34,6 +33,6 @@ function auth( req, res, next ) {
 		});
 }
 
-// app.use('/api', auth, search);
+app.use('/api', auth, search);
 app.listen(process.env.PORT);
 //module.exports = app;
