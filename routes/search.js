@@ -6,17 +6,36 @@ const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded());
 
 //GET all books
 router.get('/', (req, res, next) => {
-  Book.find({}).lean().exec( (err, books) => {
-    if(err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
-    }
-    res.send(books);
-  });
+  if (Object.keys(req.query).length === 0 ) {
+    Book.find({}).lean().exec( (err, books) => {
+      if(err) {
+        console.log(err);
+        return res.status(500).send(err[0]);
+      }
+      res.send(books);
+    });
+  }
+  else {
+    PhysicalBook.find({user_id: req.query.user})
+                .then( books => {
+                  return Promise.all(
+                    books.map( book => {
+                      return Book.findOne({ _id: book.book_id})
+                                 .lean()
+                    })
+                  );
+                })
+                .then( (books) => {
+                  res.send(books);
+                })
+                .catch(err => {
+                  console.log(err);
+                  res.status(500).send(err[0]);
+                });
+  }
 });
 
 //GET specific book
@@ -29,8 +48,5 @@ router.get('/:book_id', (req, res, next) => {
     res.send(book);
   })
 });
-
-//GET all books by specific user
-router.get('/')
 
 module.exports = router;
