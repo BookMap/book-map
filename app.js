@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
+var search = require('./routes/search');
 
 app.use( session({
 	secret: sekrit,
@@ -19,15 +20,14 @@ app.use( session({
 	cookie: { secure: false }
 }));
 
-
 app.use(grant);
 app.use( express.static( publicPath ) );
 app.use('/login', login);
 
-
 function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
+      req.user_id = payload.user_id;
       next();
     })
 		.catch( err => {

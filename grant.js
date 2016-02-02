@@ -8,7 +8,8 @@ module.exports = {
     "secret": process.env.APP_SECRET,
     "callback": "/login/facebook/callback",
     "scope": [
-      "email", "public_profile"
+      "public_profile",
+      "email"
     ]
   }
 };

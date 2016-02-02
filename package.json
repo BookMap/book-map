@@ -31,6 +31,7 @@
     "grant-express": "^3.5.5",
     "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.3.7",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose-auto-increment": "^5.0.1",
+    "request": "^2.69.0"
   }
 }

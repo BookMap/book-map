@@ -1,7 +1,10 @@
-const bodyParser = require('body-parser');
-
+<<<<<<< HEAD
 const router = require('express').Router();
+const bodyParser = require('body-parser');
+const User = require('../models/User');
 const Book = require('../models/Book');
+const PhysicalBook = require('../models/PhysicalBook');
+const mongoose = require( 'mongoose' );
 
 router.use(bodyParser.json());
 
@@ -28,7 +31,6 @@ router.get('/search/:book_id', (req, res, next) => {
 
 //POST new book
 router.post('/addBook', (req, res, next) => {
-    var saved;
   Book.findOne({
     title: req.body.title,
     author: req.body.author
@@ -54,8 +56,33 @@ router.post('/addBook', (req, res, next) => {
     });
     return physicalBook.save();
   })
-  .then( savedBook => {
+  .then( (savedBook)=> {
     res.send(savedBook);
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+});
+
+router.get('/lending', (req, res) => {
+  PhysicalBook.find({
+    user_id: req.user_id,
+    borrower: {$gt: 0}
+  })
+  .then( books => {
+    res.send(books);
+  })
+  .catch( err => {
+    res.status(500).send(err);
+  });
+});
+
+router.get('/borrowing', (req, res) => {
+  PhysicalBook.find({
+    borrower: req.user_id,
+  })
+  .then( books => {
+    res.send(books);
   })
   .catch( err => {
     res.status(500).send(err);
