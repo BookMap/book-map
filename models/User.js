@@ -6,7 +6,7 @@ const User = new Schema({
     type: String,
     require: true
   },
-  user_id: {
+  _id: {
     type: Number,
     require: true
   },
