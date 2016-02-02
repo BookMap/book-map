@@ -6,7 +6,7 @@ const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
 router.use(bodyParser.json());
-router.user(bodyParser.urlencoded());
+router.use(bodyParser.urlencoded());
 
 //GET all books
 router.get('/', (req, res, next) => {
