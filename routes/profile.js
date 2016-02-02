@@ -97,7 +97,45 @@ router.post('/about', (req, res) => {
   });
 });
 
-router.patch('')
+router.patch('/borrow', (req, res) => {
+  PhysicalBook.findOneAndUpdate({
+    book_id: req.body.book_id,
+    user_id: req.body.user_id
+  }, {
+    borrower: req.user_id
+  }, {new: true})
+  .then( book => {
+    res.send(book);
+    return Book.findById(req.body.book_id)
+  })
+  .then( book => {
+    book.availability.pull({user_id: req.body.user_id});
+    book.save();
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+});
+
+router.patch('/return', (req, res) => {
+  PhysicalBook.findOneAndUpdate({
+    book_id: req.body.book_id,
+    user_id: req.body.user_id
+  }, {
+    borrower: 0
+  }, {new: true})
+  .then( book => {
+    res.send(book);
+    return Book.findById(req.body.book_id)
+  })
+  .then( book => {
+    book.availability.push({user_id: req.body.user_id});
+    book.save();
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  })
+});
 
 
 module.exports = router;
