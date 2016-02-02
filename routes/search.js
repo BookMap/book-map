@@ -30,13 +30,13 @@ router.get('/search/:book_id', (req, res, next) => {
 
 //POST new book
 router.post('/addBook', (req, res, next) => {
-  var saved;
   Book.findOne({
     title: req.body.title,
     author: req.body.author
   })
   .then( book => {
-    if (book) {
+    console.log(book)
+    if (!book) {
       var newBook = new Book({
         title: req.body.title,
         author: req.body.author,
@@ -60,7 +60,7 @@ router.post('/addBook', (req, res, next) => {
     res.send(savedBook);
   })
   .catch( err => {
-    res.status(500).send(err);
+    res.status(500).send(err[0]);
   });
 });
 
@@ -75,25 +75,11 @@ router.get('/lending', (req, res) => {
   .catch( err => {
     res.status(500).send(err);
   });
-  // var message = [];
-  // User.findOne({user_id: req.user_id}).lean()
-  // .then( user => {
-  //   for (i in user.inventory) {
-  //     if(user.inventory[i].borrower > 0) {
-  //       message.push(user.inventory[i]);
-  //     }
-  //   }
-  //   res.json( message );
-  // })
-  // .catch( err => {
-  //   res.status(500).send(err);
-  // });
 });
 
 router.get('/borrowing', (req, res) => {
   PhysicalBook.find({
-    user_id: req.user_id,
-    borrower: {$gt: 0}
+    borrower: req.user_id,
   })
   .then( books => {
     res.send(books);
