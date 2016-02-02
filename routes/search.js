@@ -28,40 +28,38 @@ router.get('/search/:book_id', (req, res, next) => {
 
 //POST new book
 router.post('/addBook', (req, res, next) => {
-  Book.find({}, (err, books) => {
-
-    books = books.filter(book => {
-      return (book.title === req.body.title && book.author === req.body.author);
-    });
-
-    if(books.length === 0) {
+    var saved;
+  Book.findOne({
+    title: req.body.title,
+    author: req.body.author
+  })
+  .then( book => {
+    if (!book) {
       var newBook = new Book({
         title: req.body.title,
         author: req.body.author,
-        availability: [{user_id: req.body.user_id}]
+        availability: [{user_id: req.user_id}]
       });
-
-      newBook.save( (err, savedBook) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).send(err[0]);
-        }
-        res.send(savedBook);
-      });
+      return newBook.save();
+    } else {
+      book.availability.push({user_id:req.user_id});
+      return book.save();
     }
-    else {
-      var bookToUpdate = books[0];
-      bookToUpdate.availability.push({user_id:req.body.user_id});
-      bookToUpdate.save( (err, savedBook) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).send(err[0]);
-        }
-        res.send(savedBook);
-      })
-    }
-
-  });//end of Book.find
+  })
+  .then( savedBook => {
+    var physicalBook = new PhysicalBook({
+      book_id: savedBook._id,
+      user_id: req.user_id,
+      borrower: 0
+    });
+    return physicalBook.save();
+  })
+  .then( savedBook => {
+    res.send(savedBook);
+  })
+  .catch( err => {
+    res.status(500).send(err);
+  });
 });
 
 module.exports = router;
