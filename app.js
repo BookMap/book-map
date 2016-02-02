@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var mongooseConfig = require('./configure-mongoose');
 var Grant = require('grant-express');
 var grantConfig = require('./grant');
 var grant = new Grant( grantConfig );
@@ -38,5 +37,4 @@ function auth( req, res, next ) {
 
 app.use('/api/profile', auth, profile);
 app.use('/api/search', search);
-app.listen(process.env.PORT);
-//module.exports = app;
+module.exports = app;
