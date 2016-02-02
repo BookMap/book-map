@@ -16,14 +16,14 @@ router.get( '/facebook/callback', ( req, res, next ) => {
   request('https://graph.facebook.com/me?fields=email,name&access_token=' + fbtoken, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
-      var facebookId = info.id;
+      var _id = info.id;
 
-      User.findOne( { facebookId } )
+      User.findById(_id)
       	.then( user => {
       		if ( user ) return user;
       		return new User({
       			username: info.name,
-      			user_id: facebookId,
+      			_id,
       			email: info.email
       		}).save();
       	})
