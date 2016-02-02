@@ -12,6 +12,7 @@ var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
 var search = require('./routes/search');
+var profile = require('./routes/profile');
 
 app.use( session({
 	secret: sekrit,
