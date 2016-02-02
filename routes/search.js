@@ -9,6 +9,9 @@ router.use(bodyParser.json());
 
 //GET all books
 router.get('/search', (req, res, next) => {
+
+  console.log('xxxxxxx');
+
   Book.find({}).lean().exec( (err, books) => {
     if(err) {
       console.log(err);
@@ -17,6 +20,7 @@ router.get('/search', (req, res, next) => {
     res.send(books);
   });
 });
+
 //GET specific book
 router.get('/search/:book_id', (req, res, next) => {
   Book.findById(req.params.book_id).lean().exec( (err, book) => {

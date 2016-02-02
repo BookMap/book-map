@@ -1,8 +1,10 @@
+<div>
+    Search for Community Member: <input ng-model="typeFilter">
+</div>
+
 <p>List of Community Members</p>
 
-<div>
-    type: <input ng-model="typeFilter">
-</div>
+
 
 <ul>
     <li ng-repeat='user in users | filter: { type: typeFilter }'

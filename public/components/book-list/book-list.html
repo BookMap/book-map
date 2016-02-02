@@ -1,13 +1,14 @@
+<div>
+    Search for Book: <input ng-model="typeFilter">
+</div>
 
 <p>List of All Books Available for Borrowing</p>
-
-<div>
-    type: <input ng-model="typeFilter">
-</div>
 
 <ul>
     <li ng-repeat='book in books | filter: { type: typeFilter }'
         ng-class='book.type'>
+
         {{ $index + 1}}: <a ng-href='#/books/{{ book.id }}'>{{ book.name }} is a {{ book.type }} book.</a>
     </li>
+
 </ul>
