@@ -12,7 +12,8 @@
     "before"      : false,
     "after"       : false,
     "__dirname"   : false,
-    "global"      : false
+    "global"      : false,
+    "angular"     : false
   },
   "esnext": true,
   "expr": true

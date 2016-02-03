@@ -154,5 +154,5 @@ describe('Restricted Router', () => {
         expect(res.body).to.be.object;
         done();
       });
-  })
+  });
 });
