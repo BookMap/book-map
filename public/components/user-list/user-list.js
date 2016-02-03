@@ -4,7 +4,7 @@ angular.module( 'controllers' ).controller( 'UserListCtrl', [ '$scope', '$http',
           $scope.users = res.data;
         });
         $scope.getUser = function (user){
-          $window.localStorage.temp = user._id;
+          $window.localStorage.temp = JSON.stringify({id: user._id, name: user.username});
         }
     }]
 );
