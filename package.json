@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "eval $(cat .env) nodemon app.js",
+    "dev": "eval $(cat .env) nodemon server.js",
+    "temp": "eval $(cat .env) mocha",
     "test": "eval $(cat .env) gulp"
   },
   "engines": {
@@ -33,5 +34,10 @@
     "mongoose": "^4.3.7",
     "mongoose-auto-increment": "^5.0.1",
     "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
   }
 }
