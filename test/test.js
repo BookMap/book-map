@@ -8,7 +8,6 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
-const userId = process.env.TEST_USERID;
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
