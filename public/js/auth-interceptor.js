@@ -10,7 +10,7 @@ angular.module( 'myApp' ).factory( 'authInterceptor', function ( $window, $q ) {
     },
     response: function (response) {
       if (response.status === 401) {
-      	redirectToLogin();
+      	$window.location.assign( '/#' );
       }
       return response || $q.when(response);
     }

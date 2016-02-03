@@ -34,7 +34,7 @@ router.get( '/facebook/callback', ( req, res, next ) => {
       		res.send( sendToken( token ) );
       	})
       	.catch( next );
-    };
+    }
   });
 });
 

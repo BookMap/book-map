@@ -68,11 +68,11 @@ router.delete('/delete', (req, res) => {
     unique_book: req.body.book_id
   })
   .then( book => {
-    return book.populate('unique_book').execPopulate()
+    return book.populate('unique_book').execPopulate();
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id)
+    return Book.findById(req.body.book_id);
   })
   .then (book => {
     book.availability.pull(req.user_id);
@@ -103,11 +103,11 @@ router.patch('/borrow', (req, res) => {
     borrower: req.user_id
   }, {new: true})
   .then( book => {
-    return book.populate('unique_book owner').execPopulate()
+    return book.populate('unique_book owner').execPopulate();
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id)
+    return Book.findById(req.body.book_id);
   })
   .then( book => {
     book.availability.pull(req.body.owner);
@@ -126,11 +126,11 @@ router.patch('/return', (req, res) => {
     borrower: 0
   }, {new: true})
   .then( book => {
-    return book.populate('unique_book owner').execPopulate()
+    return book.populate('unique_book owner').execPopulate();
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id)
+    return Book.findById(req.body.book_id);
   })
   .then( book => {
     book.availability.push(req.body.owner);

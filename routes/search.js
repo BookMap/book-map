@@ -47,7 +47,7 @@ router.get('/:book_id', (req, res, next) => {
       return res.status(500).send(err[0]);
     }
     res.send(book);
-  })
+  });
 });
 
 

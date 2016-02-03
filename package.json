@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "eval $(cat .env) nodemon server.js",
     "temp": "eval $(cat .env) mocha",
-    "test": "eval $(cat .env) gulp"
+    "test": "eval $(cat .env) gulp",
+    "lint": "gulp lint"
   },
   "engines": {
     "node": "5.5.0"
