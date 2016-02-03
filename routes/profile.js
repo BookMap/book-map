@@ -129,7 +129,7 @@ router.patch('/return', (req, res) => {
     return Book.findById(req.body.book_id)
   })
   .then( book => {
-    book.availability.push({user_id: req.body.user_id});
+    book.availability.push({user_id: req.user_id});
     book.save();
   })
   .catch( err => {
