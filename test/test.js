@@ -30,7 +30,7 @@ describe('Public Router', () => {
 
   it('should be able to get a list of users', done => {
     request
-      .get('/api/search/users')
+      .get('/api/search?search=users')
       .end( (err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -41,7 +41,7 @@ describe('Public Router', () => {
 
   it('should return an array of books of a user', done => {
     request
-      .get(`/api/search/users/${userId}`)
+      .get(`/api/search?search=books&userId=${userId}`)
       .end( (err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -52,7 +52,7 @@ describe('Public Router', () => {
 
   it('should return an array of books', done => {
     request
-      .get('/api/search')
+      .get('/api/search?search=books')
       .end( (err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -61,9 +61,9 @@ describe('Public Router', () => {
       });
   });
 
-  it('should return an object', done => {
+  it('should return a book searched by book Id', done => {
     request
-      .get('/api/search/0')
+      .get(`/api/search?search=books&bookId=0`)
       .end( (err, res) => {
         expect(err).to.be.null;
         expect(typeof res.body).to.be.object;
