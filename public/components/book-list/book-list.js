@@ -20,4 +20,20 @@ angular.module( 'controllers' )
 
   }
 
+<<<<<<< HEAD
 ]);
+||||||| merged common ancestors
+
+
+
+        }
+
+    ]);
+=======
+
+
+
+        }
+
+    ]);
+>>>>>>> 896531dd5998274892c299436d936bd5a2a29d7a

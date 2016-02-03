@@ -1,0 +1,8 @@
+<h2>{{user}}</h2>
+<img src={{picture}}>
+<h3> Books</h3>
+<ul>
+  <li ng-repeat="book in books">{{book.unique_book.title}}<br>
+    <i>By {{book.unique_book.author}}</i>
+  </li>
+</ul>
