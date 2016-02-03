@@ -8,6 +8,7 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
+const userId = process.env.TEST_USERID;
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -40,8 +41,7 @@ describe('Public Router', () => {
 
   it('should return an array of books of a user', done => {
     request
-      .get('/api/search/userBooks')
-      .set('user', '0')
+      .get(`/api/search/users/${userId}`)
       .end( (err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -75,6 +75,15 @@ describe('Public Router', () => {
 describe('Restricted Router', () => {
 
   const request = chai.request(app);
+
+  it('should receive a status of 401 when token is not included', done => {
+    request
+      .get('/api/profile/borrowing')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
 
   it('should be able to add a testing book', done => {
     request
@@ -121,7 +130,7 @@ describe('Restricted Router', () => {
     request
       .patch('/api/profile/borrow')
       .set('token', token)
-      .send({book_id: testBook.book_id})
+      .send({book_id: testBook._id, owner: userId})
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -134,7 +143,7 @@ describe('Restricted Router', () => {
     request
       .patch('/api/profile/return')
       .set('token', token)
-      .send({book_id: testBook.book_id})
+      .send({book_id: testBook._id, owner: userId})
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -147,7 +156,7 @@ describe('Restricted Router', () => {
     request
       .delete('/api/profile/delete')
       .set('token', token)
-      .send({book_id: testBook.book_id})
+      .send({book_id: testBook._id})
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
