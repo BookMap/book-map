@@ -8,7 +8,7 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
-const user_id = process.env.TEST_USERID;
+const userId = process.env.TEST_USERID;
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -98,7 +98,6 @@ describe('Restricted Router', () => {
     request
       .get('/api/profile/lending')
       .set('token', token)
-      .set('user_id', user_id)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -111,7 +110,6 @@ describe('Restricted Router', () => {
     request
       .get('/api/profile/borrowing')
       .set('token', token)
-      .set('user_id', user_id)
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -124,11 +122,11 @@ describe('Restricted Router', () => {
     request
       .patch('/api/profile/borrow')
       .set('token', token)
-      .send({book_id: testBook.book_id, user_id: '1'})
+      .send({book_id: testBook.book_id, user_id: userId})
       .end((err, res) => {
-        console.log(res);
         expect(err).to.be.null;
         expect(res).to.have.status(200);
+        expect(res.body).to.be.object;
         done();
       });
   });
