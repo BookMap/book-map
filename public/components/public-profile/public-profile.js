@@ -5,7 +5,7 @@ angular.module( 'controllers' ).controller('PublicProfileCtrl', ['$scope','$http
     $http.get(`/api/search?search=books&userId=${$window.localStorage.temp}`)
          .then( function(res) {
             delete $window.localStorage.temp;
-            console.log(res);
-         })
+            $scope.books = res.data;
+         });
   }
 ]);

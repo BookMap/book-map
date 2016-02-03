@@ -1,4 +1,6 @@
 <h2> Books</h2>
 <ul>
-  <li></li>
+  <li ng-repeat="book in books">{{book.unique_book.title}}<br>
+    By {{book.unique_book.author}}
+  </li>
 </ul>
