@@ -82,16 +82,16 @@ describe('Restricted Router', () => {
       .post('/api/profile/addBook')
       .set('token', token)
       .send({
-        'title': 'testing',
-        'author': 'tester'
-      })
-      .end((err, res) => {
-        expect(err).to.be.null;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.object;
-        testBook = res.body;
-        done();
-      });
+         'title': 'testing',
+         'author': 'tester'
+       })
+       .end((err, res) => {
+         expect(err).to.be.null;
+         expect(res).to.have.status(200);
+         expect(res.body).to.be.object;
+         testBook = res.body;
+         done();
+       });
   });
 
   it('should receive an array of books being lent', done => {
@@ -122,7 +122,7 @@ describe('Restricted Router', () => {
     request
       .patch('/api/profile/borrow')
       .set('token', token)
-      .send({book_id: testBook.book_id, user_id: userId})
+      .send({book_id: testBook.book_id})
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
@@ -130,4 +130,30 @@ describe('Restricted Router', () => {
         done();
       });
   });
+
+  it('should successfully call PATCH to return a book', done => {
+    request
+      .patch('/api/profile/return')
+      .set('token', token)
+      .send({book_id: testBook.book_id})
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.object;
+        done();
+      });
+  });
+
+  it('should successfully call DELETE to remove a book from a user inventory', done => {
+    request
+      .delete('/api/profile/delete')
+      .set('token', token)
+      .send({book_id: testBook.book_id})
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.object;
+        done();
+      });
+  })
 });
