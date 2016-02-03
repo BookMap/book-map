@@ -17,69 +17,6 @@ router.get('/', (req, res, next) => {
         }
         res.send(books);
       });
-<<<<<<< HEAD
-});
-
-//GET all books by a specific user
-router.get('/users/:user', (req, res, next) => {
-  PhysicalBook.find({owner: req.params.user}).populate('unique_book borrower')
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
-  });
-});
-
-//GET all books
-router.get('/', (req, res, next) => {
-  Book.find({}).populate('availability')
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
-  });
-});
-
-//GET specific book
-router.get('/:book_id', (req, res, next) => {
-  Book.findById(req.params.book_id).lean().exec( (err, book) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
-||||||| merged common ancestors
-});
-
-//GET all books by a specific user
-router.get('/users/:user', (req, res, next) => {
-  PhysicalBook.find({owner: req.params.user}).populate('unique_book')
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
-  });
-});
-
-//GET all books
-router.get('/', (req, res, next) => {
-  Book.find({}).lean().exec( (err, books) => {
-    if(err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
-    }
-    res.send(books);
-  });
-});
-
-//GET specific book
-router.get('/:book_id', (req, res, next) => {
-  Book.findById(req.params.book_id).lean().exec( (err, book) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
-=======
     }
     else if (searchTerms.length === 2) {
       //GET a user's book inventory
@@ -106,7 +43,6 @@ router.get('/:book_id', (req, res, next) => {
       else {
         res.status(404).send('search queries not supported');
       }
->>>>>>> 4dff552319b31fe4fcd635cdcb53a481d45283ae
     }
   }
   //GET all users
