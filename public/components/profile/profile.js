@@ -3,6 +3,10 @@ angular.module('controllers')
 .controller( 'ProfileCtrl', [ '$scope', '$http', '$window',
   function( $scope, $http, $window ) {
 
+      if ( !$window.localStorage.token ) {
+          $window.location.assign( '/#' );
+      }
+
       $http.get('/api/profile/info')
       .then( res => {
           $scope.username = res.data.username;
