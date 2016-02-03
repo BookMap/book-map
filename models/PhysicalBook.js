@@ -4,6 +4,7 @@ const Book = require('./Book');
 const User = require('./User');
 
 const PhysicalBook = new Schema({
+  comment: String,
   unique_book: {type: Number, ref: 'Book'},
   owner: {type: Number, ref: 'User'},
   borrower: {type: Number, ref: 'User'}
