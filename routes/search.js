@@ -4,51 +4,63 @@ const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
-//GET all users
-router.get('/users', (req, res, next) => {
-  User.find({})
-      .lean()
-      .exec( (err, users) => {
-        if (err) {
+router.get('/', (req, res, next) => {
+  var queries = req.query;
+  var searchTerms = Object.keys(queries);
+  if (queries.search === 'books'){
+    //GET all books
+    if (searchTerms.length === 1){
+      Book.find({}).lean().exec( (err, books) => {
+        if(err) {
           console.log(err);
           return res.status(500).send(err[0]);
         }
-        res.send(users);
+        res.send(books);
       });
-});
-
-//GET all books by a specific user
-router.get('/users/:user', (req, res, next) => {
-  PhysicalBook.find({owner: req.params.user}).populate('unique_book')
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
-  });
-});
-
-//GET all books
-router.get('/', (req, res, next) => {
-  Book.find({}).lean().exec( (err, books) => {
-    if(err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
     }
-    res.send(books);
-  });
-});
-
-//GET specific book
-router.get('/:book_id', (req, res, next) => {
-  Book.findById(req.params.book_id).lean().exec( (err, book) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
+    else if (searchTerms.length === 2) {
+      //GET a user's book inventory
+      if (queries.userId) {
+        PhysicalBook.find({owner: queries.userId}).populate('unique_book borrower')
+        .then( books => {
+          res.send(books);
+        })
+        .catch( err => {
+          res.status(500).send(err[0]);
+        });
+      }
+      //GET a specific unique book
+      else if (queries.bookId) {
+        Book.findById(queries.bookId).lean().exec( (err, book) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).send(err[0]);
+          }
+          res.send(book);
+        });
+      }
+      //handles all other unsupported BOOK queries
+      else {
+        res.status(404).send('search queries not supported');
+      }
     }
-    res.send(book);
-  });
+  }
+  //GET all users
+  else if (queries.search === 'users' && searchTerms.length === 1){
+    User.find({})
+          .lean()
+          .exec( (err, users) => {
+            if (err) {
+              console.log(err);
+              return res.status(500).send(err[0]);
+            }
+            res.send(users);
+          });
+  }
+  //handles all other unsupported queries
+  else {
+    res.status(404).send('search queries not supported');
+  }
 });
-
 
 module.exports = router;

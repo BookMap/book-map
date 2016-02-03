@@ -6,10 +6,10 @@ const mongoose = require( 'mongoose' );
 const request = require('request');
 
 //POST new book
-router.post('/addBook', (req, res, next) => {
+router.post('/books', (req, res) => {
   Book.findOne({
     title: req.body.title,
-    author: req.body.author
+    author: req.body.author,
   })
   .then( book => {
     if (!book) {
@@ -25,23 +25,32 @@ router.post('/addBook', (req, res, next) => {
     }
   })
   .then( savedBook => {
-    res.send(savedBook);
     var physicalBook = new PhysicalBook({
+      comment: req.body.comment,
       unique_book: savedBook._id,
       owner: req.user_id
     });
-    physicalBook.save();
+    return physicalBook.save();
+  })
+  .then( savedBook => {
+    return savedBook.populate('unique_book').execPopulate()
+  })
+  .then ( book => {
+    res.send(book);
   })
   .catch( err => {
     res.status(500).send(err[0]);
   });
 });
 
-router.get('/lending', (req, res) => {
+router.get('/books', (req, res, next) => {
+  if (req.query.search !== 'lending') {
+    next();
+  }
   PhysicalBook.find({
     owner: req.user_id,
     borrower: {$gt: 0}
-  }).populate('unique_book borrower').select('-_id -owner -__v')
+  }).populate('unique_book borrower').select('-owner -__v')
   .then( books => {
     res.send(books);
   })
@@ -50,10 +59,13 @@ router.get('/lending', (req, res) => {
   });
 });
 
-router.get('/borrowing', (req, res) => {
+router.get('/books', (req, res, next) => {
+  if (req.query.search !== 'borrowing') {
+    next();
+  }
   PhysicalBook.find({
     borrower: req.user_id,
-  }).populate('owner unique_book').select('-_id -__v -borrower')
+  }).populate('owner unique_book').select('-__v -borrower')
   .then( books => {
     res.send(books);
   })
@@ -62,17 +74,17 @@ router.get('/borrowing', (req, res) => {
   });
 });
 
-router.delete('/delete', (req, res) => {
+//must be the physical book id, not the unique book id
+router.delete('/books/:book_id', (req, res, next) => {
   PhysicalBook.findOneAndRemove({
-    owner: req.user_id,
-    unique_book: req.body.book_id
+    _id: req.params.book_id
   })
   .then( book => {
     return book.populate('unique_book').execPopulate();
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id);
+    return Book.findById(book.unique_book._id);
   })
   .then (book => {
     book.availability.pull(req.user_id);
@@ -83,10 +95,12 @@ router.delete('/delete', (req, res) => {
   });
 });
 
-router.post('/about', (req, res) => {
-  User.findOneAndUpdate({_id: req.user_id}, {
-    about: req.body.about
-  }, {new: true})
+//edit profile info, ex. about or username
+router.patch('/', (req, res) => {
+  var fields = {};
+  if (req.body.about) { fields.about = req.body.about; }
+  if (req.body.username) { fields.username = req.body.username; }
+  User.findOneAndUpdate({_id: req.user_id}, fields, {new: true})
   .then( user => {
     res.send(user);
   })
@@ -95,10 +109,14 @@ router.post('/about', (req, res) => {
   });
 });
 
-router.patch('/borrow', (req, res) => {
+//book_id must be physical book id
+router.patch('/books/:book_id', (req, res, next) => {
+  if (req.query.request !== 'borrow') {
+    next();
+  }
+  var owner;
   PhysicalBook.findOneAndUpdate({
-    unique_book: req.body.book_id,
-    owner: req.body.owner
+    _id: req.params.book_id
   }, {
     borrower: req.user_id
   }, {new: true})
@@ -107,10 +125,11 @@ router.patch('/borrow', (req, res) => {
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id);
+    owner = book.owner._id;
+    return Book.findById(book.unique_book._id);
   })
   .then( book => {
-    book.availability.pull(req.body.owner);
+    book.availability.pull(owner);
     book.save();
   })
   .catch( err => {
@@ -118,10 +137,13 @@ router.patch('/borrow', (req, res) => {
   });
 });
 
-router.patch('/return', (req, res) => {
+router.patch('/books/:book_id', (req, res, next) => {
+  if (req.query.request !== 'return') {
+    next();
+  }
+  var owner;
   PhysicalBook.findOneAndUpdate({
-    unique_book: req.body.book_id,
-    owner: req.body.owner
+    _id: req.params.book_id
   }, {
     borrower: 0
   }, {new: true})
@@ -130,10 +152,11 @@ router.patch('/return', (req, res) => {
   })
   .then( book => {
     res.send(book);
-    return Book.findById(req.body.book_id);
+    owner = book.owner._id;
+    return Book.findById(book.unique_book._id);
   })
   .then( book => {
-    book.availability.push(req.body.owner);
+    book.availability.push(owner);
     book.save();
   })
   .catch( err => {
@@ -141,12 +164,13 @@ router.patch('/return', (req, res) => {
   });
 });
 
-router.get('/info', (req, res) => {
+router.get('/', (req, res) => {
   User.findById(req.user_id)
   .then( user => {
     var info = {
       username: user.username,
-      id: user._id
+      id: user._id,
+      about: user.about
     };
     res.send(info);
   })

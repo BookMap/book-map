@@ -15,9 +15,6 @@ const User = new Schema({
     require: true
   },
   about: String
-	}, {
-	id: false,
-	_id: false
 });
 
 module.exports = mongoose.model( 'User', User );
