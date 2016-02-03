@@ -1,9 +1,9 @@
-var token = window.sessionStorage.token || window.localStorage.token;
+var token = window.localStorage.token;
 
 if ( !token ) {
     redirectToLogin();
 }
 
 function redirectToLogin() {
-    window.location.assign( 'login.html' );
+    window.location.assign( '/' );
 }

@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
+const request = require('request');
 
 router.use(bodyParser.json());
 
@@ -134,8 +135,31 @@ router.patch('/return', (req, res) => {
   })
   .catch( err => {
     res.status(500).send(err[0]);
-  })
+  });
 });
 
+router.get('/info', (req, res) => {
+  var info = {};
+  User.findById(req.user_id)
+  .then( user => {
+    info.username = user.username;
+    info.id = user._id;
+    res.send(info);
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+})
+
+// router.get('/picture', (req, res) => {
+//   var options = {
+//     url: 'https://graph.facebook.com/' + req.user_id + '/picture',
+//     headers: {"Accept": 'image/jpeg'}
+//   }
+//   request(options, function (error, response, body) {
+//     res.type('image/jpeg');
+//     res.send(body);
+//   });
+// });
 
 module.exports = router;
