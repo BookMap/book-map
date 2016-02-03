@@ -1,27 +1,27 @@
 <div>
-    Search for Book: <input ng-model="typeFilter">
+    Search for Book: <input ng-model="typeFilter"></input>
 </div>
 
 <p>List of All Books Available for Borrowing</p>
 
 <ul>
     <li ng-repeat='book in books | filter: { title: typeFilter}'
-        ng-class='book.title'>
+        ng-class='book.title'
+        ng-controller='GreetingController'>
 
-        {{ $index + 1}}: <a ng-href='#/books/{{ book.id }}'>{{ book.title }}</a> by {{ book.author }}.</a>
+        {{ book._id}}:<a ng-href='#/books/{{ book._id }}'>
+                {{ book.title }}</a> by {{ book.author }}.
 
         <div class="detailsBtn">
-            <button data-ng-click=""
-            >
+
+            <button ng-click="select(book._id)" >
                 View Book Details</button>
+
+            <p> Greeting is {{$scope.greeting}} </p>
+
         </div>
 
     </li>
 
 </ul>
 
-
-<button class="btn btn-default"
-        data-ng-click="Day.addDay(Day,User);User.userAddDay='false';Day.getUserProfile(null); Day.getUserProfile(null); ">
-    Save This Day
-</button>

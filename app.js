@@ -38,5 +38,6 @@ function auth( req, res, next ) {
 
 app.use('/api/profile', auth, profile);
 app.use('/api/search', search);
+
 app.listen(process.env.PORT);
 //module.exports = app;
