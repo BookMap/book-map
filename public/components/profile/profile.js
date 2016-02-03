@@ -29,5 +29,26 @@ angular.module('controllers')
         console.log(err[0]);
       });
 
+      $http.get('/api/profile/lending')
+      .then( res => {
+        $scope.lending = res.data;
+      })
+      .catch( err => {
+        console.log(err[0]);
+      });
+
+      $scope.delete = function(book_id, index) {
+        $http({
+          method: 'DELETE',
+          url: '/api/profile/delete/' + book_id
+        }).then( res => {
+          $scope.deleteResponse = res.data;
+          $scope.books.splice(index, 1);
+        })
+        .catch( err => {
+          console.log(err);
+        });
+      }
+
   }
 ]);

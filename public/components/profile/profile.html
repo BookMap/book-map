@@ -5,11 +5,13 @@
 <img src={{picture}}>
 
 <h2>My Books</h2>
+<div ng-show=deleteResponse>Successfully deleted {{deleteResponse.unique_book.title}}</div>
 <ul>
   <li ng-repeat='book in books'>
     <div>Title: {{book.unique_book.title}}</div>
     <div>Author: {{book.unique_book.author}}</div>
-    <div ng-repeat='user in book.availability'>Borrowed by: {{book.borrower}}</div>
+    <div ng-show=book.borrower>Borrowed by: {{book.borrower.username}}</div>
+    <button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)'>Delete</button>
   </li>
 </ul>
 
@@ -19,5 +21,15 @@
     <div>Title: {{borrowedBook.unique_book.title}}</div>
     <div>Author: {{borrowedBook.unique_book.author}}</div>
     <div>Borrowing From: {{borrowedBook.owner.username}}</div>
+    <button ng-click='someFunction()'>Return</button>
+  </li>
+</ul>
+
+<h2>Currently Lending</h2>
+<ul>
+  <li ng-repeat='lentBook in lending'>
+    <div>Title: {{lentBook.unique_book.title}}</div>
+    <div>Author: {{lentBook.unique_book.author}}</div>
+    <div>Lent To: {{lentBook.borrower.username}}</div>
   </li>
 </ul>

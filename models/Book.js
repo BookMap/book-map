@@ -13,6 +13,7 @@ const Book = new Schema({
     type: String,
     require:true
   },
+  comment: String,
   availability: [{type: Number, ref: 'User'}]
 });
 

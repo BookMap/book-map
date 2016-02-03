@@ -19,7 +19,7 @@ router.get('/users', (req, res, next) => {
 
 //GET all books by a specific user
 router.get('/users/:user', (req, res, next) => {
-  PhysicalBook.find({owner: req.params.user}).populate('unique_book')
+  PhysicalBook.find({owner: req.params.user}).populate('unique_book borrower')
   .then( books => {
     res.send(books);
   })
@@ -30,12 +30,12 @@ router.get('/users/:user', (req, res, next) => {
 
 //GET all books
 router.get('/', (req, res, next) => {
-  Book.find({}).lean().exec( (err, books) => {
-    if(err) {
-      console.log(err);
-      return res.status(500).send(err[0]);
-    }
+  Book.find({}).populate('availability')
+  .then( books => {
     res.send(books);
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
   });
 });
 
