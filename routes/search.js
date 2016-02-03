@@ -19,22 +19,6 @@ router.get('/users', (req, res, next) => {
 
 //GET all books by a specific user
 router.get('/users/:user', (req, res, next) => {
-  // PhysicalBook.find({user_id: req.headers.user})
-  //             .then( books => {
-  //               return Promise.all(
-  //                 books.map( book => {
-  //                   return Book.findOne({ _id: book.book_id})
-  //                              .lean()
-  //                 })
-  //               );
-  //             })
-  //             .then( (books) => {
-  //               res.send(books);
-  //             })
-  //             .catch(err => {
-  //               console.log(err);
-  //               res.status(500).send(err[0]);
-  //             });
   PhysicalBook.find({owner: req.params.user}).populate('unique_book')
   .then( books => {
     res.send(books);
