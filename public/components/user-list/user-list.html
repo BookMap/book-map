@@ -6,10 +6,8 @@
 
 
 
-<ul>
-    <li ng-repeat='user in users | filter: { type: typeFilter }'
-        ng-class='user.type'>
-        {{ $index + 1}}: <a ng-href='#/users/{{ user.id }}'>{{ user.name }} is a {{ user.type }} type of community member.</a>
-    </li>
+<ul >
+    <li ng-repeat="user in users | filter: { username: typeFilter}"><a ng-href="#/publicProfile">{{user.username}}</a></li>
 </ul>
 
+<!--ng-href='#/users/{{ user.id }}'-->

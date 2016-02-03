@@ -3,7 +3,7 @@ angular.module( 'controllers' )
 
         function( $scope, $http ) {
 
-            $http.get( '/api/search' )
+            $http.get( '/api/search?search=books' )
 
             .then( res => {
                 $scope.books = res.data;
