@@ -27,47 +27,50 @@ describe('Public Router', () => {
   const request = chai.request(app);
 
   it('should be able to get a list of users', done => {
-    chai.request(app)
-        .get('/api/search/users')
-        .end( (err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          expect(res.body.length).to.not.be.undefined;
-          done();
-        });
+    request
+      .get('/api/search/users')
+      .end( (err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body.length).to.not.be.undefined;
+        done();
+      });
   });
 
   it('should return an array of books of a user', done => {
-    chai.request(app)
-        .get('/api/search/userBooks')
-        .set('user', '0')
-        .end( (err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          expect(res.body.length).to.not.be.undefined;
-          done();
-        });
+    request
+      .get('/api/search/userBooks')
+      .set('user', '0')
+      .end( (err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body.length).to.not.be.undefined;
+        done();
+      });
   });
 
   it('should return an array of books', done => {
-    chai.request(app)
-        .get('/api/search')
-        .end( (err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          expect(res.body.length).to.not.be.undefined;
-          done();
-        });
+    request
+      .get('/api/search')
+      .end( (err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body.length).to.not.be.undefined;
+        done();
+      });
   });
 
   it('should return an object', done => {
     request
-          .get('/api/search/0')
-          .end( (err, res) => {
-            expect(err).to.be.null;
-            expect(typeof res.body).to.be.object;
-            done();
-          })
+        .get('/api/search/0')
+        .end( (err, res) => {
+          expect(err).to.be.null;
+          expect(typeof res.body).to.be.object;
+          done();
+        });
   });
 });
 
+describe('Restricted Router', () => {
+  it('should ')
+});
