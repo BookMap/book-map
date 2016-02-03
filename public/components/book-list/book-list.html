@@ -1,16 +1,21 @@
 <div>
-    Search for Book: <input ng-model="typeFilter"></input>
+    Search Title: <input ng-model="titleFilter"></input>
+    Search Author: <input ng-model="authorFilter"></input>
 </div>
 
 <p>List of All Books Available for Borrowing</p>
 
 <ul>
-    <li ng-repeat='book in books | filter: { title: typeFilter}'
-        ng-class='book.title'>
+    <li ng-repeat='book in books | filter: { title: titleFilter, author: authorFilter}'>
 
-        {{ book._id }}:&nbsp; {{ book.title }} by {{ book.author }}.
+        Title: {{ book.title }} by {{ book.author }}
 
-        <div class="detailsBtn">
+        <button ng-click="details = true">View Details</button>
+        <ul>
+          <li ng-repeat='owner in book.availability'>Copy available from: {{owner.username}}</li>
+        </ul>
+
+        <!-- <div class="detailsBtn">
             <button ng-click="book.show = !book.show"
                     ng-click="select(book._id)" >
                     View Details
@@ -26,7 +31,6 @@
                      <li>Copies Available for Borrowing: {{ }}</li>
                  </ul>
             </div>
-        </div>
+        </div> -->
     </li>
 </ul>
-

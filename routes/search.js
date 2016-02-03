@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   if (queries.search === 'books'){
     //GET all books
     if (searchTerms.length === 1){
-      Book.find({}).lean().exec( (err, books) => {
+      Book.find({}).populate('availability').lean().exec( (err, books) => {
         if(err) {
           console.log(err);
           return res.status(500).send(err[0]);
