@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "eval $(cat .env) nodemon server.js",
+    "dev-debug": "eval $(cat .env) node-debug server.js",
     "temp": "eval $(cat .env) mocha",
     "test": "eval $(cat .env) gulp",
     "lint": "gulp lint"

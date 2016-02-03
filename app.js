@@ -21,6 +21,7 @@ app.use( session({
 	cookie: { secure: false }
 }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(grant);
 app.use( express.static( publicPath ) );
