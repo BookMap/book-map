@@ -21,13 +21,29 @@ angular.module('controllers')
        })
       .catch( err => { console.log( err[0] ); });
 
+
       $http.get('/api/profile/borrowing')
-      .then( res => {
-        $scope.borrowing = res.data;
-      })
-      .catch( err => {
-        console.log(err[0]);
-      });
+         .then( res => {
+            $scope.borrowing = res.data;
+            })
+        .catch( err => {
+            console.log(err[0]);
+        });
+
+
+      $scope.addbook = function(  title, author, comment ){
+
+          console.log('values', title, author, comment);
+
+          //req.title = title;
+          //req.author = author;
+          //req.comment = comment;
+
+
+          //$http.post( '/api/profile/addbook' )
+
+      };
+
 
       $http.get('/api/profile/lending')
       .then( res => {
