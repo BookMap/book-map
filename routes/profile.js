@@ -26,6 +26,7 @@ router.post('/books', (req, res) => {
   })
   .then( savedBook => {
     var physicalBook = new PhysicalBook({
+      comment: req.body.comment,
       unique_book: savedBook._id,
       owner: req.user_id
     });
