@@ -120,7 +120,7 @@ router.patch('/borrow', (req, res) => {
 router.patch('/return', (req, res) => {
   PhysicalBook.findOneAndUpdate({
     book_id: req.body.book_id,
-    user_id: req.body.user_id
+    user_id: req.user_id
   }, {
     borrower: 0
   }, {new: true})

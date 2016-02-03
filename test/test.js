@@ -140,8 +140,20 @@ describe('Restricted Router', () => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.be.object;
-        console.log(res.body);
         done();
-      })
+      });
   });
+
+  it('should successfully call DELETE to remove a book from a user inventory', done => {
+    request
+      .delete('/api/profile/delete')
+      .set('token', token)
+      .send({book_id: testBook.book_id})
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.object;
+        done();
+      });
+  })
 });
