@@ -15,6 +15,7 @@ mongoose.Promise = global.Promise;
 
 chai.use(chaiHttp);
 
+var testBook;
 
 describe('Public Router', () => {
   before(done => {
@@ -88,6 +89,7 @@ describe('Restricted Router', () => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.be.object;
+        testBook = res.body;
         done();
       });
   });
@@ -115,6 +117,19 @@ describe('Restricted Router', () => {
         expect(res).to.have.status(200);
         expect(res.body.length).to.not.be.undefined;
         done();
-      })
-  })
+      });
+  });
+
+  it('should successfully call PATCH to borrow a book', done => {
+    request
+      .patch('/api/profile/borrow')
+      .set('token', token)
+      .send({book_id: testBook.book_id, user_id: '1'})
+      .end((err, res) => {
+        console.log(res);
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
 });
