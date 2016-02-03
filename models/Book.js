@@ -1,16 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
+const User = require('./User');
 
 autoIncrement.initialize(mongoose.connection);
-
-var subSchema = mongoose.Schema({
-  user_id: {
-    type: String,
-    require: true
-  }
-},{ _id : false });
-
 const Book = new Schema({
   title: {
     type: String,
@@ -20,7 +13,7 @@ const Book = new Schema({
     type: String,
     require:true
   },
-  availability: [subSchema]
+  availability: [{type: Number, ref: 'User'}]
 });
 
 Book.plugin(autoIncrement.plugin, { model: 'Book', field: '_id' });

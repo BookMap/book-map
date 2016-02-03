@@ -5,21 +5,28 @@ var app = angular.module( 'myApp', [
 
 var controllers = angular.module( 'controllers', [] );
 
-app.config( [ '$routeProvider', function( $routeProvider ) {
+app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $httpProvider ) {
 
-    $routeProvider
-        .when('/books', {
-            templateUrl: 'components/book-list/book-list.html',
-            controller: 'BookListCtrl'
-        })
+  $httpProvider.interceptors.push( 'authInterceptor' );
 
-        .when('/users', {
-            templateUrl: 'components/user-list/user-list.html',
-            controller: 'UserCtrl'
-        })
+  $routeProvider
+      .when('/books', {
+          templateUrl: 'components/book-list/book-list.html',
+          controller: 'BookListCtrl'
+      })
 
-        .otherwise({
-            redirectTo: '/'
-        });
+      .when('/users', {
+          templateUrl: 'components/user-list/user-list.html',
+          controller: 'UserCtrl'
+      })
+
+      .when('/profile', {
+        templateUrl: 'components/profile/profile.html',
+        controller: 'ProfileCtrl'
+      })
+
+      .otherwise({
+          redirectTo: '/'
+      });
 
 }]);

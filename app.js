@@ -12,6 +12,7 @@ var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
 var search = require('./routes/search');
 var profile = require('./routes/profile');
+var bodyParser = require('body-parser');
 
 app.use( session({
 	secret: sekrit,
@@ -19,6 +20,7 @@ app.use( session({
 	saveUninitialized: true,
 	cookie: { secure: false }
 }));
+app.use(bodyParser.json());
 
 app.use(grant);
 app.use( express.static( publicPath ) );
