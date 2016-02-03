@@ -1,41 +1,42 @@
 const router = require('express').Router();
-const bodyParser = require('body-parser');
 const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
-router.use(bodyParser.json());
+//GET all users
+router.get('/users', (req, res, next) => {
+  User.find({})
+      .lean()
+      .exec( (err, users) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send(err[0]);
+        }
+        res.send(users);
+      });
+});
+
+//GET all books by a specific user
+router.get('/users/:user', (req, res, next) => {
+  PhysicalBook.find({owner: req.params.user}).populate('unique_book')
+  .then( books => {
+    res.send(books);
+  })
+  .catch( err => {
+    res.status(500).send(err[0]);
+  });
+});
 
 //GET all books
 router.get('/', (req, res, next) => {
-  if (Object.keys(req.query).length === 0 ) {
-    Book.find({}).lean().exec( (err, books) => {
-      if(err) {
-        console.log(err);
-        return res.status(500).send(err[0]);
-      }
-      res.send(books);
-    });
-  }
-  else {
-    PhysicalBook.find({user_id: req.query.user})
-                .then( books => {
-                  return Promise.all(
-                    books.map( book => {
-                      return Book.findOne({ _id: book.book_id})
-                                 .lean()
-                    })
-                  );
-                })
-                .then( (books) => {
-                  res.send(books);
-                })
-                .catch(err => {
-                  console.log(err);
-                  res.status(500).send(err[0]);
-                });
-  }
+  Book.find({}).lean().exec( (err, books) => {
+    if(err) {
+      console.log(err);
+      return res.status(500).send(err[0]);
+    }
+    res.send(books);
+  });
 });
 
 //GET specific book
@@ -46,7 +47,8 @@ router.get('/:book_id', (req, res, next) => {
       return res.status(500).send(err[0]);
     }
     res.send(book);
-  })
+  });
 });
+
 
 module.exports = router;

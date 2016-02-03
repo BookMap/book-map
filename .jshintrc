@@ -1,0 +1,20 @@
+{
+  "undef": true,
+  "globals": {
+    "require"     : false,
+    "exports"     : false,
+    "module"      : false,
+    "describe"    : false,
+    "process"     : false,
+    "console"     : false,
+    "it"          : false,
+    "Buffer"      : false,
+    "before"      : false,
+    "after"       : false,
+    "__dirname"   : false,
+    "global"      : false,
+    "angular"     : false
+  },
+  "esnext": true,
+  "expr": true
+}

@@ -6,22 +6,27 @@
 
 <ul>
     <li ng-repeat='book in books | filter: { title: typeFilter}'
-        ng-class='book.title'
-        ng-controller='GreetingController'>
+        ng-class='book.title'>
 
-        {{ book._id}}:<a ng-href='#/books/{{ book._id }}'>
-                {{ book.title }}</a> by {{ book.author }}.
+        {{ book._id }}:&nbsp; {{ book.title }} by {{ book.author }}.
 
         <div class="detailsBtn">
+            <button ng-click="book.show = !book.show"
+                    ng-click="select(book._id)" >
+                    View Details
+            </button>
 
-            <button ng-click="select(book._id)" >
-                View Book Details</button>
-
-            <p> Greeting is {{$scope.greeting}} </p>
-
+            <div ng-show = "book.show" >
+                <h2>Detail View</h2>
+                 <ul class = 'detailView' >
+                     <li>ID: {{ book._id }}</li>
+                     <li>Title: {{ book.title }}</li>
+                     <li>Author: {{ book.author }}</li>
+                     <li>Owner: {{ }}</li>
+                     <li>Copies Available for Borrowing: {{ }}</li>
+                 </ul>
+            </div>
         </div>
-
     </li>
-
 </ul>
 

@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var mongooseConfig = require('./configure-mongoose');
 var Grant = require('grant-express');
 var grantConfig = require('./grant');
 var grant = new Grant( grantConfig );
@@ -13,6 +12,7 @@ var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
 var search = require('./routes/search');
 var profile = require('./routes/profile');
+var bodyParser = require('body-parser');
 
 app.use( session({
 	secret: sekrit,
@@ -20,6 +20,7 @@ app.use( session({
 	saveUninitialized: true,
 	cookie: { secure: false }
 }));
+app.use(bodyParser.json());
 
 app.use(grant);
 app.use( express.static( publicPath ) );
@@ -39,5 +40,4 @@ function auth( req, res, next ) {
 app.use('/api/profile', auth, profile);
 app.use('/api/search', search);
 
-app.listen(process.env.PORT);
-//module.exports = app;
+module.exports = app;

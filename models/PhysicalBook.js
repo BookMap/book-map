@@ -1,19 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Book = require('./Book');
+const User = require('./User');
 
 const PhysicalBook = new Schema({
-  book_id: {
-    type: Number,
-    require: true
-  },
-  user_id: {
-    type: Number,
-    require:true
-  },
-  borrower: {
-    type: Number,
-    require: true
-  }
+  unique_book: {type: Number, ref: 'Book'},
+  owner: {type: Number, ref: 'User'},
+  borrower: {type: Number, ref: 'User'}
 });
 
 module.exports = mongoose.model('Physicalbook', PhysicalBook);

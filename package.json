@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "eval $(cat .env) nodemon app.js",
-    "test": "eval $(cat .env) gulp"
+    "dev": "eval $(cat .env) nodemon server.js",
+    "temp": "eval $(cat .env) mocha",
+    "test": "eval $(cat .env) gulp",
+    "lint": "gulp lint"
   },
   "engines": {
     "node": "5.5.0"
@@ -33,5 +35,15 @@
     "mongoose": "^4.3.7",
     "mongoose-auto-increment": "^5.0.1",
     "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.4.5"
   }
 }

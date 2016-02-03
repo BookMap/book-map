@@ -10,9 +10,14 @@ angular.module( 'controllers' )
             .catch( err => { console.log( err[0] ); });
 
 
-            //$scope.select = function( book ) {
-            //    $scope.selectedId = book._id;
-            //};
+            $scope.select = function(  somebook ) {
+                console.log(somebook,"xxxx");
+                $scope.selectedId = somebook;
+
+                $http.get( '/api/search/'+somebook)
+                    .then( res =>
+                     {console.log(res.data,' is res.body') })
+            };
 
         }
 

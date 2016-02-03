@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const User = new Schema({
+	_id: {
+		type: Number,
+		require: true
+	},
 	username: {
     type: String,
-    require: true
-  },
-  _id: {
-    type: Number,
     require: true
   },
   email: {
@@ -15,9 +15,9 @@ const User = new Schema({
     require: true
   },
   about: String
-}, {
-	timestamps: true,
-	strict: false // allow oauth ids and profiles
+	}, {
+	id: false,
+	_id: false
 });
 
 module.exports = mongoose.model( 'User', User );
