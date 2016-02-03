@@ -8,6 +8,7 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
+const user_id = process.env.TEST_USERID;
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -62,15 +63,58 @@ describe('Public Router', () => {
 
   it('should return an object', done => {
     request
-        .get('/api/search/0')
-        .end( (err, res) => {
-          expect(err).to.be.null;
-          expect(typeof res.body).to.be.object;
-          done();
-        });
+      .get('/api/search/0')
+      .end( (err, res) => {
+        expect(err).to.be.null;
+        expect(typeof res.body).to.be.object;
+        done();
+      });
   });
 });
 
 describe('Restricted Router', () => {
-  it('should ')
+
+  const request = chai.request(app);
+
+  it('should be able to add a testing book', done => {
+    request
+      .post('/api/profile/addBook')
+      .set('token', token)
+      .send({
+        'title': 'testing',
+        'author': 'tester'
+      })
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.object;
+        done();
+      });
+  });
+
+  it('should receive an array of books being lent', done => {
+    request
+      .get('/api/profile/lending')
+      .set('token', token)
+      .set('user_id', user_id)
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body.length).to.not.be.undefined;
+        done();
+      });
+  });
+
+  it('should receive and array of books being borrowed', done => {
+    request
+      .get('/api/profile/borrowing')
+      .set('token', token)
+      .set('user_id', user_id)
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.body.length).to.not.be.undefined;
+        done();
+      })
+  })
 });
