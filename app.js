@@ -29,9 +29,9 @@ app.use('/login', login);
 function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
-      req.user_id = payload.user_id;
-      next();
-    })
+      		req.user_id = payload.user_id;
+      		next();
+    	})
 		.catch( err => {
 			res.status( 401 ).send( 'Not authorized' );
 		});
