@@ -1,10 +1,22 @@
-<div>hello</div>
+<h2>My profile</h2>
 
-<div>{{username}}</div>
+<div>Hello {{username}}!</div>
 <img src={{picture}}>
 
+<h2>My Books</h2>
 <ul>
   <li ng-repeat='book in books'>
-    {{book.title}}
+    <div>Title: {{book.unique_book.title}}</div>
+    <div>Author: {{book.unique_book.author}}</div>
+    <div ng-repeat='user in book.availability'>Borrowed by: {{book.borrower}}</div>
+  </li>
+</ul>
+
+<h2>Currently Borrowing</h2>
+<ul>
+  <li ng-repeat='borrowedBook in borrowing'>
+    <div>Title: {{borrowedBook.unique_book.title}}</div>
+    <div>Author: {{borrowedBook.unique_book.author}}</div>
+    <div>Borrowing From: {{borrowedBook.owner.username}}</div>
   </li>
 </ul>

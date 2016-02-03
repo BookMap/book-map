@@ -9,13 +9,7 @@ angular.module('controllers')
           $scope.username = res.data.username;
           $scope.id = res.data.id;
           $scope.picture = 'https://graph.facebook.com/' + $scope.id + '/picture?height=200&width=200';
-          $http({
-            method: 'GET',
-            url: '/api/search/userBooks',
-            headers: {
-              'user': $scope.id
-            }
-          }).then( res => {
+          $http.get('/api/search/users/' + $scope.id).then( res => {
             $scope.books = res.data;
           })
           .catch( err => {
@@ -24,6 +18,13 @@ angular.module('controllers')
        })
       .catch( err => { console.log( err[0] ); });
 
+      $http.get('/api/profile/borrowing')
+      .then( res => {
+        $scope.borrowing = res.data;
+      })
+      .catch( err => {
+        console.log(err[0]);
+      });
 
   }
 ]);
