@@ -1,18 +1,25 @@
-body{background-color: whitesmoke; padding:20px; margin: 20px; margin: 0 auto;}
+body{background-color: whitesmoke;
+    padding:20px;
+    margin: 20px;
+    margin: 0 auto;}
 
-.topnav {border: solid lightgrey 1px;  background-color: white;}
-.toptitle {display: inline-block; }
+.navbar1 { border: solid lightgrey 1px;
+        padding:10px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #d4d4d4;
+        height: 70px;}
 
-
-.navbar1 { border: solid lightgrey 1px; padding:10px; margin: 10px; border-radius: 5px;  background-color: #d4d4d4}
-
-  li {
+li {
     list-style-type: none;
 }
-.topnav {border: solid lightgrey 1px;}
+
+.topnav {border: solid lightgrey 1px;
+        background-color: white;}
+
 .toptitle {display: inline-block;}
 
- .detailsBtn { text-align: right;}
+.detailsBtn { text-align: right;}
 
 .detailView {text-align: left;
             font-size: 1rem;
@@ -21,9 +28,19 @@ body{background-color: whitesmoke; padding:20px; margin: 20px; margin: 0 auto;}
             padding: 5px; margin: 10px;
             background-color: antiquewhite;}
 
-.bignumber {font-size: 6rem; text-align: center; margin: 5px; padding: 5px;}
+.bignumber {font-size: 4rem; text-align: center; margin: 5px; padding: 5px;}
 
 .gridthing { display: flex; flex-wrap: wrap; }
 
-.factbox {text-align: center; background-color: darkturquoise; border-radius: 30px; height: 250px; width: 250px; margin: 10px; margin-right: 20px; padding: 10px;  box-shadow: 10px 11px 5px #888888;
-  }
+.factbox {font-size: 1.1rem;
+        text-align: center;
+        background-color: darkturquoise;
+        border-radius: 30px;
+        height: 230px;
+        width: 230px;
+        margin: 10px;
+        margin-right: 20px;
+        padding: 10px;
+        box-shadow: 5px 5px 3px #888888;
+
+}
