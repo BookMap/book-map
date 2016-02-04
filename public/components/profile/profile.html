@@ -4,60 +4,20 @@
 <div>Hello {{username}}!</div>
 <img src={{picture}}>
 
-
-
 <h3>Enter a New Book</h3>
-
-
-
-<form id="makeBook" data-ng-submit="addBook(title, author, comment)">
-
+<form id="makeBook" ng-submit="addbook( title, author, comment)">
   <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title">
   <br>
   <input type="text" size="100" data-ng-model="author" placeholder ="Enter Author Name" >
   <br>
-  <input type="text" size="100" data-ng-model="comment" placeholder="Enter Comment">
+  <input type="text" size="100" data-ng-model="comment" placeholder= "Enter Comment">
   <br>
-  <button class="btn btn-primary"
-          ng-submit="addbook( title, author, comment)">
-    Create New Book Record
-  </button>
-
+  <button class="btn btn-primary">Create New Book Record</button>
 </form>
-
-
-
-
 
 <br><br>
 
-<form>
-  <fieldset class="form-group">
-    <label for="title">Enter Exact Title Here</label>
-    <textarea class="form-control" id="title" name='title' rows="3"></textarea>
-  </fieldset>
-<br>
-  <fieldset class="form-group">
-    <label for="author">Author Name, First then Last</label>
-    <textarea class="form-control" id="author" name="author" rows="3"></textarea>
-  </fieldset>
-<br>
-  <fieldset class="form-group">
-    <label for="comment">Comments, Reviews or Anything Else About This Book</label>
-    <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-  </fieldset>
-
-  </fieldset>
-  <br>
-   </div>
-  <button class="btn btn-primary"
-          ng-click="addbook(title, author, comment)">Create New Book Record</button>
-</form>
-
-
-
-
-<h2>My Books</h2>
+<h3>My Books</h3>
 <div ng-show=deleteResponse>Successfully deleted {{deleteResponse.unique_book.title}}</div>
 
 <ul>
@@ -79,7 +39,7 @@
   </li>
 </ul>
 
-<h2>Currently Lending</h2>
+<h3>Currently Lending</h3>
 <ul>
   <li ng-repeat='lentBook in lending'>
     <div>Title: {{lentBook.unique_book.title}}</div>
