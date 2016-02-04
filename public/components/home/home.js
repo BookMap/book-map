@@ -3,18 +3,13 @@ angular.module('controllers')
     .controller( 'HomeCtrl', [ '$scope', '$http', '$window',
         function( $scope, $http, $window ) {
 
-            console.log('happening thing');
-
-            //if ( !$window.localStorage.token ) {
-            //      $window.location.assign( '/#' );
-            //}
+            console.log("controller called");
 
             $scope.fblogout = function(){
                 $window.localStorage.token='';
                 $window.location.assign( '/#/home' );
                 console.log ("logging out of facebook");
             };
-
 
             $http.get( '/api/users' ).then( function( res ) {
                     $scope.usersCount = res.data.length;
@@ -29,19 +24,11 @@ angular.module('controllers')
                 .then( res => {
                 $scope.bookCount = res.data.length;
 
-                for(ii=0; ii<res.data.length; ii++){
-                    console.log(res.data.borrower, "is borrowers");
+                for( ii=0; ii<res.data.length;  ii++){
+                    console.log(res.data[ii], "is borrowers", ii);
 
                 }
             });
-
-
-
-
-
-
-
-
 
         }
     ]);
