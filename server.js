@@ -3,6 +3,10 @@ const dbURI = process.env.DB_URI;
 const app = require('./app');
 mongoose.Promise = global.Promise;
 
+if (process.env.NODE_ENV !== 'development') {
+  console.log('The process env variables: ', process.env);
+}
+
 mongoose.connect(dbURI);
 
 // CONNECTION EVENTS

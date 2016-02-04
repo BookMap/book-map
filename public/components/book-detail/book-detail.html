@@ -10,11 +10,15 @@
   </div>
 
   <div ng-repeat='book in physicalBooks'>
+    <div ng-show='book.invalidBorrow'>There was an error when trying to borrow the book</div>
+    <div ng-show='book.borrower'>You have successfully borrowed {{book.unique_book.title}}!</div>
     <div>Owner: {{book.owner.username}}</div>
     <div>Comments: {{book.comment}}</div>
     <div ng-hide='book.borrower'>Status: Available</div>
     <div ng-show='book.borrower'>Status: Unavailable</div>
+    <button ng-hide='book.borrower' ng-click='borrow(book)'>Borrow</button>
     <div>---------</div>
   </div>
+
 
 </div>
