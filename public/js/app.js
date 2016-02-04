@@ -38,6 +38,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'BookDetailCtrl'
       })
 
+      .when('/',{
+          templateUrl: 'components/home/home.html',
+          controller: 'HomeCtrl'
+      })
+
       .otherwise({
           redirectTo: '/'
       });

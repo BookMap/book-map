@@ -7,5 +7,4 @@ angular.module( 'controllers' )
       .catch( err => console.log(err[0]) );
 
   }
-
 ]);

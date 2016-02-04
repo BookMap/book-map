@@ -7,19 +7,21 @@ angular.module('controllers')
           $window.location.assign( '/#' );
       }
 
-      $http.get('/api/profile/info')
+      $http.get('/api/profile/')
       .then( res => {
           $scope.username = res.data.username;
           $scope.id = res.data.id;
+          $scope.about = res.data.about;
           $scope.picture = 'https://graph.facebook.com/' + $scope.id + '/picture?height=200&width=200';
-          $http.get('/api/search/users/' + $scope.id).then( res => {
-            $scope.books = res.data;
-          })
-          .catch( err => {
-            console.log(err[0]);
-          });
-       })
-      .catch( err => { console.log( err[0] ); });
+          $http.get('/api/search?search=books&userId=' + $scope.id)
+              .then( res => {
+                $scope.books = res.data;
+                })
+              .catch( err => {
+                console.log(err[0]);
+                });
+            })
+            .catch( err => { console.log( err[0] ); });
 
 
       $http.get('/api/profile/borrowing')
@@ -35,13 +37,13 @@ angular.module('controllers')
 
           console.log('values', title, author, comment);
 
-          //req.title = title;
-          //req.author = author;
-          //req.comment = comment;
-
-
-          //$http.post( '/api/profile/addbook' )
-
+          $http.post( '/api/profile/books',
+                    {   title: title,
+                        author: author,
+                        comment: comment}
+                    )
+              .then (console.log('wrote new record to book list') )
+              .catch(err)
       };
 
 

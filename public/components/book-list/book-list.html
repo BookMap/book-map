@@ -7,10 +7,7 @@
 
 <ul>
     <li ng-repeat='book in books | filter: { title: titleFilter, author: authorFilter}'>
-
         Title: {{ book.title }} by {{ book.author }}
-
         <a ng-href="#/details/{{book._id}}">View Details</a>
-
     </li>
 </ul>
