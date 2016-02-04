@@ -27,7 +27,7 @@ router.get('/', (req, res, next) => {
 //GET a user's physical book inventory
 router.get('/', (req, res, next) => {
   if (req.query.owner && Object.keys(req.query).length === 1) {
-    find(req.query, req, res, 'unique_book');
+    find(req.query, req, res, 'unique_book borrower');
   }
   else {
     next();

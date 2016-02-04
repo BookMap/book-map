@@ -1,20 +1,27 @@
 <nav>
-    <a href="#/home"> Home </a>
+    <a href="#/home" > Home </a>
     &nbsp; &nbsp;
-    <a href="#/profile"> Profile </a>
-    &nbsp; &nbsp;
+
     <a href="#/books"> All Books </a>
     &nbsp; &nbsp;
+
     <a href="#/users"> All Users</a>
-    &nbsp; &nbsp;&nbsp; &nbsp;
+    &nbsp; &nbsp; | &nbsp; &nbsp;
 
 
-    <a href="/connect/facebook/"> Facebook Login </a>
-    &nbsp; &nbsp;
+    <span ng-show="username">
+        <a href="#/profile"> {{username}}'s Account </a>
+        <img src={{picture}}>
+            &nbsp; &nbsp;
 
-    <a ng-click ="fblogout()" href="/#/home">
-    Facebook Logout</a>
+        <a ng-click ="fblogout()" href="/#/home">
+            FB Logout</a>
+    </span>
 
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
+    <span ng-show="!username">
+        <a href="/connect/facebook/"> Login With Facebook </a>
+    </span>
 
 </nav>
