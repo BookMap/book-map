@@ -1,14 +1,18 @@
-
 body{background-color: whitesmoke; padding:20px; margin: 20px; margin: 0 auto;}
 
 .topnav {border: solid lightgrey 1px;  background-color: white;}
 .toptitle {display: inline-block; }
 
-li { border: solid black 1px; margin: 10px;   }
 
 .navbar1 { border: solid lightgrey 1px; padding:10px; margin: 10px; border-radius: 5px;  background-color: #d4d4d4}
 
-.detailsBtn { text-align: right;}
+  li {
+    list-style-type: none;
+}
+.topnav {border: solid lightgrey 1px;}
+.toptitle {display: inline-block;}
+
+ .detailsBtn { text-align: right;}
 
 .detailView {text-align: left;
             font-size: 1rem;

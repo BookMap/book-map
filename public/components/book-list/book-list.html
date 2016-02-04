@@ -15,7 +15,7 @@
   <tr ng-repeat='book in books | filter: { title: titleFilter, author: authorFilter}'>
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
-    <td>{{book.availability.length}}</td>
+    <td>{{book.availability.length}} copies</td>
     <td><a ng-href="#/details/{{book._id}}">View Details</a></td>
   </tr>
 </table>
