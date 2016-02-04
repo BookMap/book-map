@@ -36,7 +36,7 @@
     <td>{{book.unique_book.title}}</td>
     <td>{{book.unique_book.author}}</td>
     <td>{{book.borrower.username}}</td>
-    <td><button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)' ng-show='book.borrower.username' class="btn btn-danger">Delete</button></td>
+    <td><button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)' class="btn btn-danger">Delete</button></td>
   </tr>
 </table>
 
