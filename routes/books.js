@@ -4,16 +4,22 @@ const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
 
+function find (query, req, res, populateItem) {
+  PhysicalBook.find(query)
+              .populate(populateItem)
+              .lean()
+              .exec( (err, books) => {
+                if(err) {
+                          console.log(err);
+                          return res.status(500).send(err[0]);
+                        }
+                res.send(books);
+              })
+}
+//GET all physical books
 router.get('/', (req, res, next) => {
-  var queries = req.query;
-  if (Object.keys(queries).length === 0){
-    PhysicalBook.find({}).lean().exec( (err, books) => {
-          if(err) {
-            console.log(err);
-            return res.status(500).send(err[0]);
-          }
-          res.send(books);
-        });
+  if (Object.keys(req.query).length === 0){
+    find(req.query, req, res, 'unique_book');
   }
   else {
     next();
@@ -22,19 +28,9 @@ router.get('/', (req, res, next) => {
 
 //GET a user's book inventory
 router.get('/', (req, res, next) => {
-  var queries = req.query;
-  console.log('HERE');
-  if (queries.owner && Object.keys(queries).length === 1) {
-    PhysicalBook.find({owner: queries.owner})
-                .populate('borrower')
-                .lean()
-                .exec( (err, books) => {
-                  if(err) {
-                    console.log(err);
-                    return res.status(500).send(err[0]);
-                  }
-                  res.send(books);
-                });
+  if (req.query.owner && Object.keys(req.query).length === 1) {
+    console.log(req.query);
+    find(req.query, req, res, 'unique_book');
   }
   else {
     next();
@@ -43,7 +39,12 @@ router.get('/', (req, res, next) => {
 
 //GET all books of same unique book
 router.get('/', (req, res, next) => {
-  var queries = req.query;
+  if (req.query.unique_book && Object.keys(req.query).length === 1) {
+    find(req.query, req, res, 'owner');
+  }
+  else {
+    next();
+  }
 
 });
 
