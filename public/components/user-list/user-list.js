@@ -1,6 +1,6 @@
-angular.module( 'controllers' ).controller( 'BookListCtrl', [ '$scope', '$http',
+angular.module( 'controllers' ).controller( 'UserListCtrl', [ '$scope', '$http',
     function( $scope, $http ) {
-        $http.get( '/api/books' ).then( function( res ) {
+        $http.get( '' ).then( function( res ) {
             $scope.books = res.data;
         });
     }]

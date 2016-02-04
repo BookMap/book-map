@@ -4,32 +4,20 @@
 <div>Hello {{username}}!</div>
 <img src={{picture}}>
 
-
 <h3>Enter a New Book</h3>
-
-
 <form id="makeBook" ng-submit="addbook( title, author, comment)">
-
   <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title">
   <br>
   <input type="text" size="100" data-ng-model="author" placeholder ="Enter Author Name" >
   <br>
-  <input type="text" size="100" data-ng-model="comment" placeholder="Enter Comment">
+  <input type="text" size="100" data-ng-model="comment" placeholder= "Enter Comment">
   <br>
-  <button class="btn btn-primary">
-
-    Create New Book Record
-  </button>
-
+  <button class="btn btn-primary">Create New Book Record</button>
 </form>
-
 
 <br><br>
 
-
-
-
-<h2>My Books</h2>
+<h3>My Books</h3>
 <div ng-show=deleteResponse>Successfully deleted {{deleteResponse.unique_book.title}}</div>
 
 <ul>
@@ -51,7 +39,7 @@
   </li>
 </ul>
 
-<h2>Currently Lending</h2>
+<h3>Currently Lending</h3>
 <ul>
   <li ng-repeat='lentBook in lending'>
     <div>Title: {{lentBook.unique_book.title}}</div>

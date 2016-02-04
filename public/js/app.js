@@ -28,6 +28,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'ProfileCtrl'
       })
 
+      .when('/',{
+          templateUrl: 'components/home/home.html',
+          controller: 'HomeCtrl'
+      })
+
       .otherwise({
           redirectTo: '/'
       });
