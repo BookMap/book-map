@@ -121,6 +121,7 @@ router.patch('/books/:book_id', (req, res, next) => {
     borrower: req.user_id
   }, {new: true})
   .then( book => {
+    console.log(book);
     return book.populate('unique_book owner').execPopulate();
   })
   .then( book => {
@@ -133,6 +134,7 @@ router.patch('/books/:book_id', (req, res, next) => {
     book.save();
   })
   .catch( err => {
+    console.log(err);
     res.status(500).send(err[0]);
   });
 });

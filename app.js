@@ -13,6 +13,7 @@ var books = require('./routes/books');
 var titles = require('./routes/titles');
 var users = require('./routes/users');
 var profile = require('./routes/profile');
+var admin = require('./routes/admin');
 var bodyParser = require('body-parser');
 
 app.use( session({
@@ -43,6 +44,7 @@ app.use('/api/profile', auth, profile);
 app.use('/api/books', books);
 app.use('/api/titles',titles);
 app.use('/api/users', users);
+app.use('/api/admin', admin);
 app.use(function(req, res, next) {
   res.send('404, no page found: '+req.url);
 });

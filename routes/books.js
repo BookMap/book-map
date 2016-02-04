@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 //GET all physical books of same unique book
 router.get('/', (req, res, next) => {
   if (req.query.unique_book && Object.keys(req.query).length === 1) {
-    find(req.query, req, res, 'owner');
+    find(req.query, req, res, 'owner unique_book');
   }
   else {
     next();

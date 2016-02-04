@@ -1,32 +1,14 @@
 <div>
-    Search for Book: <input ng-model="typeFilter"></input>
+    Search Title: <input ng-model="titleFilter"></input>
+    Search Author: <input ng-model="authorFilter"></input>
 </div>
 
 <p>List of All Books Available for Borrowing</p>
 
 <ul>
-    <li ng-repeat='book in books | filter: { title: typeFilter}'
-        ng-class='book.title'>
-
-        &nbsp; {{ book.title }} by {{ book.author }}.
-
-        <div class="detailsBtn">
-            <button ng-click="book.show = !book.show"
-                    ng-click="select(book._id)" >
-                    View Details
-            </button>
-
-            <div ng-show = "book.show" >
-                <h4 style="text-align: left;">Detail View</h4>
-                 <ul class = 'detailView' >
-                     <li>ID: {{ book._id }}</li>
-                     <li>Title: {{ book.title }}</li>
-                     <li>Author: {{ book.author }}</li>
-                     <li>Owner: {{ }}</li>
-                     <li>Copies Available for Borrowing: {{ }}</li>
-                 </ul>
-            </div>
-        </div>
+    <li ng-repeat='book in books | filter: { title: titleFilter, author: authorFilter}'>
+        <div>Title: {{ book.title }} by {{ book.author }}</div>
+        <div>Available Copies: {{book.availability.length}}</div>
+        <a ng-href="#/details/{{book._id}}">View Details</a>
     </li>
 </ul>
-
