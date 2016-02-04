@@ -32,7 +32,7 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'ProfileCtrl'
       })
 
-      .when('/home', {
+      .when('/', {
 
           templateUrl: 'components/home/home.html',
           controller: 'HomeCtrl'
