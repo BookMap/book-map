@@ -33,6 +33,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'ProfileCtrl'
       })
 
+      .when('/details/:book_id', {
+        templateUrl: 'components/book-detail/book-detail.html',
+        controller: 'BookDetailCtrl'
+      })
+
       .otherwise({
           redirectTo: '/'
       });

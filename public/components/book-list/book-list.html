@@ -10,30 +10,7 @@
 
         Title: {{ book.title }} by {{ book.author }}
 
-        <button ng-click="details = true">View Details</button>
-        <ul>
-          <li ng-repeat='owner in book.availability'>
-            Copy available from: {{owner.username}}
-            Book comments: {{owner}}
-          </li>
-        </ul>
+        <a ng-href="#/details/{{book._id}}">View Details</a>
 
-        <!-- <div class="detailsBtn">
-            <button ng-click="book.show = !book.show"
-                    ng-click="select(book._id)" >
-                    View Details
-            </button>
-
-            <div ng-show = "book.show" >
-                <h2 style="text-align: left;">Detail View</h2>
-                 <ul class = 'detailView' >
-                     <li>ID: {{ book._id }}</li>
-                     <li>Title: {{ book.title }}</li>
-                     <li>Author: {{ book.author }}</li>
-                     <li>Owner: {{ }}</li>
-                     <li>Copies Available for Borrowing: {{ }}</li>
-                 </ul>
-            </div>
-        </div> -->
     </li>
 </ul>
