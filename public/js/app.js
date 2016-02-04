@@ -20,7 +20,12 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
 
       .when('/users', {
           templateUrl: 'components/user-list/user-list.html',
-          controller: 'UserCtrl'
+          controller: 'UserListCtrl'
+      })
+
+      .when('/publicProfile', {
+          templateUrl: 'components/public-profile/public-profile.html',
+          controller: 'PublicProfileCtrl'
       })
 
       .when('/profile', {
