@@ -32,16 +32,8 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'ProfileCtrl'
       })
 
-<<<<<<< HEAD
-      .when('/home', {
-=======
-      .when('/details/:book_id', {
-        templateUrl: 'components/book-detail/book-detail.html',
-        controller: 'BookDetailCtrl'
-      })
+      .when('/', {
 
-      .when('/',{
->>>>>>> 928e4d1f04c3f7e4edc15b43dd1b02f7c725ecb5
           templateUrl: 'components/home/home.html',
           controller: 'HomeCtrl'
       })
