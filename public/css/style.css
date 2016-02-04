@@ -1,10 +1,12 @@
 
-body{background-color: whitesmoke; padding:20px; margin: 20px;}
+body{background-color: whitesmoke; padding:20px; margin: 20px; margin: 0 auto;}
 
-.topnav {border: solid lightgrey 1px;}
-.toptitle {display: inline-block;}
+.topnav {border: solid lightgrey 1px;  background-color: white;}
+.toptitle {display: inline-block; }
 
-li { border: solid black 1px; padding: 5px; margin: 10px; }
+li { border: solid black 1px; margin: 10px;   }
+
+.navbar1 { border: solid lightgrey 1px; padding:10px; margin: 10px; border-radius: 5px;  background-color: #d4d4d4}
 
 .detailsBtn { text-align: right;}
 
@@ -14,3 +16,10 @@ li { border: solid black 1px; padding: 5px; margin: 10px; }
             border: solid black 1px;
             padding: 5px; margin: 10px;
             background-color: antiquewhite;}
+
+.bignumber {font-size: 6rem; text-align: center; margin: 5px; padding: 5px;}
+
+.gridthing { display: flex; flex-wrap: wrap; }
+
+.factbox {text-align: center; background-color: darkturquoise; border-radius: 30px; height: 250px; width: 250px; margin: 10px; margin-right: 20px; padding: 10px;  box-shadow: 10px 11px 5px #888888;
+  }
