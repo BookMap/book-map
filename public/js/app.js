@@ -17,7 +17,6 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
           controller: 'BookListCtrl'
       })
 
-
       .when('/users', {
           templateUrl: 'components/user-list/user-list.html',
           controller: 'UserListCtrl'
@@ -33,7 +32,7 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'ProfileCtrl'
       })
 
-      .when('/',{
+      .when('/home', {
           templateUrl: 'components/home/home.html',
           controller: 'HomeCtrl'
       })
