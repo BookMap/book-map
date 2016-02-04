@@ -5,13 +5,15 @@ var Grant = require('grant-express');
 var grantConfig = require('./grant');
 var grant = new Grant( grantConfig );
 var token = require('./lib/token');
-var search = require('./routes/search');
 var login = require('./routes/login');
 var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
-var search = require('./routes/search');
+var books = require('./routes/books');
+var titles = require('./routes/titles');
+var users = require('./routes/users');
 var profile = require('./routes/profile');
+var admin = require('./routes/admin');
 var bodyParser = require('body-parser');
 
 app.use( session({
@@ -39,6 +41,12 @@ function auth( req, res, next ) {
 }
 
 app.use('/api/profile', auth, profile);
-app.use('/api/search', search);
+app.use('/api/books', books);
+app.use('/api/titles',titles);
+app.use('/api/users', users);
+app.use('/api/admin', admin);
+app.use(function(req, res, next) {
+  res.send('404, no page found: '+req.url);
+});
 
 module.exports = app;

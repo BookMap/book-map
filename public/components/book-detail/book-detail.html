@@ -1,7 +1,20 @@
 <div>
-    <h2>Detail view</h2>
-    <div ng-hide='book'>
-        Invalid book
-    </div>
-    <div ng-show='book'>{{ book.name }} is a {{ book.type }} owned by {{ book.user }}</div>
+  <h2>Detail view</h2>
+  <div ng-show='invalidId'>
+    Invalid book
+  </div>
+  <div ng-show='uniqueBook'>
+    <div>{{ uniqueBook.title }} by {{ uniqueBook.author }}</div>
+    <div>Summary: {{ uniqueBook.summary }}</div>
+    <div>--------------------------</div>
+  </div>
+
+  <div ng-repeat='book in physicalBooks'>
+    <div>Owner: {{book.owner.username}}</div>
+    <div>Comments: {{book.comment}}</div>
+    <div ng-hide='book.borrower'>Status: Available</div>
+    <div ng-show='book.borrower'>Status: Unavailable</div>
+    <div>---------</div>
+  </div>
+
 </div>

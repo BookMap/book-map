@@ -13,7 +13,7 @@ angular.module('controllers')
           $scope.id = res.data.id;
           $scope.about = res.data.about;
           $scope.picture = 'https://graph.facebook.com/' + $scope.id + '/picture?height=200&width=200';
-          $http.get('/api/search?search=books&userId=' + $scope.id)
+          $http.get('/api/books?owner=' + $scope.id)
               .then( res => {
                 $scope.books = res.data;
                 })
@@ -24,7 +24,7 @@ angular.module('controllers')
             .catch( err => { console.log( err[0] ); });
 
 
-      $http.get('/api/profile/borrowing')
+      $http.get('/api/profile/books?search=borrowing')
          .then( res => {
             $scope.borrowing = res.data;
             })
@@ -47,7 +47,7 @@ angular.module('controllers')
       };
 
 
-      $http.get('/api/profile/lending')
+      $http.get('/api/profile/books?search=lending')
       .then( res => {
         $scope.lending = res.data;
       })

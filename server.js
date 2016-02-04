@@ -3,6 +3,8 @@ const dbURI = process.env.DB_URI;
 const app = require('./app');
 mongoose.Promise = global.Promise;
 
+console.log('The process env variables: ', process.env);
+
 mongoose.connect(dbURI);
 
 // CONNECTION EVENTS
@@ -31,5 +33,3 @@ process.on('SIGINT', function() {
     process.exit(0);
   });
 });
-
-
