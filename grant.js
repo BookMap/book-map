@@ -1,7 +1,8 @@
+var isDev = process.env.NODE_ENV !== 'production';
 module.exports = {
   "server": {
-    "protocol": "http",
-    "host": process.env.HOST + ':' + process.env.PORT
+    "protocol": isDev ? "http" : "https",
+    "host": isDev ? process.env.HOST + ':' + process.env.PORT : process.env.HOST
   },
   "facebook": {
     "key": process.env.APP_ID,
