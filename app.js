@@ -10,7 +10,8 @@ var login = require('./routes/login');
 var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
 var sekrit = process.env.APP_SECRET;
-var search = require('./routes/search');
+var books = require('./routes/books');
+var titles = require('./routes/titles');
 var profile = require('./routes/profile');
 var bodyParser = require('body-parser');
 
@@ -39,6 +40,10 @@ function auth( req, res, next ) {
 }
 
 app.use('/api/profile', auth, profile);
-app.use('/api/search', search);
+app.use('/api/books', books);
+app.use('/api/titles',titles);
+app.use(function(req, res, next) {
+  res.send('404, no page found: '+req.url);
+});
 
 module.exports = app;
