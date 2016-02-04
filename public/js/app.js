@@ -28,14 +28,13 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
       })
 
       .when('/profile', {
-        templateUrl: 'components/profile/profile.html',
-        controller: 'ProfileCtrl'
+            templateUrl: 'components/profile/profile.html',
+            controller: 'ProfileCtrl'
       })
 
       .when('/', {
-
-          templateUrl: 'components/home/home.html',
-          controller: 'HomeCtrl'
+            templateUrl: 'components/home/home.html',
+            controller: 'HomeCtrl'
       })
 
       .otherwise({
