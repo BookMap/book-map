@@ -1,4 +1,4 @@
-<div ng-controller = "HomeCtrl">
+<div ng-controller="HomeCtrl as Home">
 
 <h3>Welcome to the Book Exchange</h3>
 
@@ -10,12 +10,13 @@
 
     <br>
 
-    Login with Facebook
-        <a href="/connect/facebook/"> Facebook Login </a>
-        &nbsp; &nbsp;
-    <br>
-        <a href="Logout">   </a>
+    <a href="/connect/facebook/">Facebook Login</a>
 
+    <br><br>
+
+    <a ng-click ="fblogout()" href="/#/home">Facebook Logout</a>
+
+    <br>
     <br>
 
     <p>We have X members - Join Us Today</p>
