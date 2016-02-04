@@ -1,5 +1,8 @@
 
-body{background-color: whitesmoke;}
+body{background-color: whitesmoke; padding:20px; margin: 20px;}
+
+.topnav {border: solid lightgrey 1px;}
+.toptitle {display: inline-block;}
 
 li { border: solid black 1px; padding: 5px; margin: 10px; }
 

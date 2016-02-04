@@ -7,7 +7,7 @@ const request = require('request');
 const sendToken = ( token ) => String.raw`
 	<script>
 		window.localStorage.token='${token}';
-		window.location.assign('/');
+		window.location.assign('/#/home');
 	</script>`;
 
 router.get( '/facebook/callback', ( req, res, next ) => {
