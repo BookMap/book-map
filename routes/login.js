@@ -11,6 +11,9 @@ const sendToken = ( token ) => String.raw`
 	</script>`;
 
 router.get( '/facebook/callback', ( req, res, next ) => {
+	if (req.query.error) {
+		return next(req.query.err);
+	}
   var fbtoken = req.query.access_token;
 
   request('https://graph.facebook.com/me?fields=email,name&access_token=' + fbtoken, function (error, response, body) {

@@ -45,8 +45,12 @@ app.use('/api/books', books);
 app.use('/api/titles',titles);
 app.use('/api/users', users);
 app.use('/api/admin', admin);
-app.use(function(req, res, next) {
-  res.send('404, no page found: '+req.url);
+app.use(function(err, req, res, next) {
+  res.status(500).send(err);
 });
+app.use(function(req, res, next) {
+  res.status(404).send('404, no page found: ' + req.url);
+});
+
 
 module.exports = app;
