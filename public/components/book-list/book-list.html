@@ -8,7 +8,7 @@
     <li ng-repeat='book in books | filter: { title: typeFilter}'
         ng-class='book.title'>
 
-        {{ book._id }}:&nbsp; {{ book.title }} by {{ book.author }}.
+        &nbsp; {{ book.title }} by {{ book.author }}.
 
         <div class="detailsBtn">
             <button ng-click="book.show = !book.show"
@@ -17,7 +17,7 @@
             </button>
 
             <div ng-show = "book.show" >
-                <h2 style="text-align: left;">Detail View</h2>
+                <h4 style="text-align: left;">Detail View</h4>
                  <ul class = 'detailView' >
                      <li>ID: {{ book._id }}</li>
                      <li>Title: {{ book.title }}</li>
