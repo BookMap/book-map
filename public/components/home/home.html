@@ -1,30 +1,37 @@
-<div ng-controller="HomeCtrl as Home">
+<div>
 
 <h3>Welcome to the Book Exchange</h3>
+    <p>Join a community of people who share their favorite books.   &nbsp;&nbsp;&nbsp;&nbsp;  Lend a book.   Borrow a book.</p>
 
-    <p>"Both a borrower and a lender be..."  !Polonius, Hamlet
+    <div class="gridthing">
 
-    <p>Join a community of people who share their favorite books.</p>
+        <div class="factbox">
+            We have
+            <div class="bignumber">{{usersCount}}</div>
+            members.
+        </div>
 
-    <p>Lend a book, borrow a book.</p>
+        <div class="factbox">
+            Our members have
+            <div class="bignumber">{{titlesCount}}</div>
+            unique titles.
+        </div>
+    </div>
 
-    <br>
-    <br>
+    <div class="gridthing">
+        <div class="factbox">
+            Our members have
+            <div class="bignumber">{{bookCount}}</div>
+            physical books.
+        </div>
 
-    <p>We have X members - Join Us Today</p>
-
-    <br>
-
-    <p>Our members have Y unique books</p>
-
-    <br>
-
-    <p>Our members have Z phyiscal books</p>
-
-    <br>
-
-    <p>Q books are currently on loan.</p>
-
-
+        <div class="factbox">
+            Members now have
+            <div class="bignumber">???</div>
+            books on loan to other community members.
+        </div>
+    </div>
 
 </div>
+<br><br><br>
+<p>"Both a borrower and a lender be..."  !Polonius, Hamlet

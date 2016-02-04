@@ -1,4 +1,5 @@
-<nav>
+<nav class="navbar1">
+
     <a href="#/home" > Home </a>
     &nbsp; &nbsp;
 
@@ -11,11 +12,11 @@
 
     <span ng-show="username">
         <a href="#/profile"> {{username}}'s Account </a>
-        <img src={{picture}}>
+        <img src={{picture}} class="img-thumbnail">
             &nbsp; &nbsp;
 
         <a ng-click ="fblogout()" href="/#/home">
-            FB Logout</a>
+            Logout</a>
     </span>
 
     &nbsp;&nbsp;&nbsp;&nbsp;

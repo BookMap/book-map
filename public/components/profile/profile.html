@@ -2,27 +2,24 @@
 <div class="page-header">
   <h3> Hello {{username}}! </h3>
 </div>
-<img src={{picture}}>
+<img src={{picture}} class="img-thumbnail img-responsive">
 
-<h3>Enter a New Book</h3>
+<br><br>
+<div class="page-header">
+  <h3>Enter a New Book</h3>
+</div>
 <form id="makeBook" ng-submit="addbook( title, author, comment)" class = "form-horizontal">
-  <div>
-    <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title">
-  </div>
-  <div>
-    <input type="text" size="100" data-ng-model="author" placeholder ="Enter Author Name" >
-  </div>
-  <div>
-    <input type="text" size="100" data-ng-model="comment" placeholder= "Enter Comment">
-  </div>
-  <div>
-    <button class="btn btn-success">Create New Book Record</button>
-  </div>
+  <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title" class="form-control">
+  <input type="text" size="100" data-ng-model="author" placeholder ="Enter Author Name" class="form-control">
+  <input type="text" size="100" data-ng-model="comment" placeholder= "Enter Comment" class="form-control">
+  <button class="btn btn-sm btn-success">Create New Book Record</button>
 </form>
 
 <br><br>
 
-<h3>My Books</h3>
+<div class="page-header">
+  <h3>Your Books</h3>
+</div>
 <div ng-show=deleteResponse>Successfully deleted {{deleteResponse.unique_book.title}}</div>
 
 <table class = "table table-bordered table-striped">
@@ -30,33 +27,41 @@
     <th>Title</th>
     <th>Author</th>
     <th>Borrowed By</th>
-    <th></th>
+    <th>Action</th>
   </tr>
   <tr ng-repeat='book in books'>
     <td>{{book.unique_book.title}}</td>
     <td>{{book.unique_book.author}}</td>
     <td>{{book.borrower.username}}</td>
-    <td><button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)' class="btn btn-danger">Delete</button></td>
+    <td><button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)' class="btn btn-sm btn-danger">Delete</button></td>
   </tr>
 </table>
 
-<h3>Currently Borrowing</h3>
+<br><br>
+
+<div class="page-header">
+  <h3>Currently Borrowing</h3>
+</div>
 <table class = "table table-bordered table-striped">
    <tr>
     <th>Title</th>
     <th>Author</th>
     <th>Owner</th>
-    <th></th>
+    <th>Action</th>
   </tr>
   <tr ng-repeat='borrowedBook in borrowing'>
     <td>{{borrowedBook.unique_book.title}}</td>
     <td>{{borrowedBook.unique_book.author}}</td>
     <td>{{borrowedBook.owner.username}}</td>
-    <td><button ng-click='someFunction()' class="btn btn-warning">Return</button></td>
+    <td><button ng-click='someFunction()' class="btn btn-sm btn-warning">Return</button></td>
   </tr>
 </table>
 
-<h3>Currently Lending</h3>
+<br><br>
+
+<div class="page-header">
+  <h3>Currently Lending</h3>
+</div>
   <table class = "table table-bordered table-striped">
    <tr>
     <th>Title</th>

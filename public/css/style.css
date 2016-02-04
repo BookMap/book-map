@@ -1,10 +1,23 @@
+body{background-color: whitesmoke;
+    padding:20px;
+    margin: 20px;
+    margin: 0 auto;}
 
-body{background-color: whitesmoke; padding:20px; margin: 20px;}
+.navbar1 { border: solid lightgrey 1px;
+        padding:10px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #d4d4d4;
+        height: 70px;}
 
-.topnav {border: solid lightgrey 1px;}
+li {
+    list-style-type: none;
+}
+
+.topnav {border: solid lightgrey 1px;
+        background-color: white;}
+
 .toptitle {display: inline-block;}
-
-li { border: solid black 1px; padding: 5px; margin: 10px; }
 
 .detailsBtn { text-align: right;}
 
@@ -14,3 +27,20 @@ li { border: solid black 1px; padding: 5px; margin: 10px; }
             border: solid black 1px;
             padding: 5px; margin: 10px;
             background-color: antiquewhite;}
+
+.bignumber {font-size: 4rem; text-align: center; margin: 5px; padding: 5px;}
+
+.gridthing { display: flex; flex-wrap: wrap; }
+
+.factbox {font-size: 1.1rem;
+        text-align: center;
+        background-color: darkturquoise;
+        border-radius: 30px;
+        height: 230px;
+        width: 230px;
+        margin: 10px;
+        margin-right: 20px;
+        padding: 10px;
+        box-shadow: 5px 5px 3px #888888;
+
+}
