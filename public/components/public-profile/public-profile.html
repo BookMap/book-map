@@ -1,8 +1,24 @@
-<h2>{{user}}</h2>
-<img src={{picture}}>
-<h3> Books</h3>
-<ul>
-  <li ng-repeat="book in books">{{book.unique_book.title}}<br>
-    <i>By {{book.unique_book.author}}</i>
-  </li>
-</ul>
+<div class="page-header">
+  <h2>{{user}}</h2>
+</div>
+
+<img src={{picture}} class="img-thumbnail">
+<br><br>
+<div class="page-header">
+  <h3>Books</h3>
+</div>
+
+<div>
+  <i>{{about}}</i>
+</div>
+
+<table class = "table table-bordered table-striped">
+<tr>
+    <th>Title</th>
+    <th>Author</th>
+  </tr>
+  <tr ng-repeat="book in books">
+    <td>{{book.unique_book.title}}</td>
+    <td>{{book.unique_book.author}}</td>
+  </tr>
+</table>
