@@ -133,7 +133,8 @@ router.patch('/books/:book_id', (req, res, next) => {
     book.save();
   })
   .catch( err => {
-    res.status(500).send(err[0]);
+    console.log(err);
+    res.status(500).send(err);
   });
 });
 
@@ -150,10 +151,8 @@ router.patch('/books/:book_id', (req, res, next) => {
     return book.save();
   })
   .then( () => {
-    console.log(updatedBook);
     res.send(updatedBook);
     owner = updatedBook.owner;
-    console.log(owner);
     return Book.findById(updatedBook.unique_book);
   })
   .then( book => {
