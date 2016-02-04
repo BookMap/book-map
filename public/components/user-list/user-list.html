@@ -1,13 +1,17 @@
-<div>
-    Search for Community Member: <input ng-model="typeFilter">
+
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h3>List of Community Members</h3>
 </div>
+<div class="panel-body">
+  <div>
+      Search for Community Member: <input ng-model="typeFilter">
+  </div>
+  <br>
+  <ul class="list-group">
+      <li ng-repeat="user in users | filter: { username: typeFilter}" ><a href="#/publicProfile" ng-click="getUser(user)" class="list-group-item">{{user.username}}</a></li>
+  </ul>
 
-<p>List of Community Members</p>
-
-
-
-<ul >
-    <li ng-repeat="user in users | filter: { username: typeFilter}"><a href="#/publicProfile" ng-click="getUser(user)">{{user.username}}</a></li>
-</ul>
-
+</div>
+</div>
 <!--ng-href='#/users/{{ user.id }}'-->

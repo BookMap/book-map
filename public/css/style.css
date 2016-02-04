@@ -1,10 +1,10 @@
 
 body{background-color: whitesmoke; padding:20px; margin: 20px;}
-
+li {
+    list-style-type: none;
+}
 .topnav {border: solid lightgrey 1px;}
 .toptitle {display: inline-block;}
-
-li { border: solid black 1px; padding: 5px; margin: 10px; }
 
 .detailsBtn { text-align: right;}
 
