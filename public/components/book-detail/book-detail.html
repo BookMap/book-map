@@ -1,24 +1,31 @@
 <div>
-  <h2>Detail view</h2>
   <div ng-show='invalidId'>
     Invalid book
   </div>
   <div ng-show='uniqueBook'>
-    <div>{{ uniqueBook.title }} by {{ uniqueBook.author }}</div>
-    <div>Summary: {{ uniqueBook.summary }}</div>
-    <div>--------------------------</div>
+    <h3>{{ uniqueBook.title }} by {{ uniqueBook.author }}</h3>
+    <h4>Summary:</h4>
+    <p>{{ uniqueBook.summary }}</p>
   </div>
+  <hr />
 
-  <div ng-repeat='book in physicalBooks'>
-    <div ng-show='book.invalidBorrow'>There was an error when trying to borrow the book</div>
-    <div ng-show='book.borrower'>You have successfully borrowed {{book.unique_book.title}}!</div>
-    <div>Owner: {{book.owner.username}}</div>
-    <div>Comments: {{book.comment}}</div>
-    <div ng-hide='book.borrower'>Status: Available</div>
-    <div ng-show='book.borrower'>Status: Unavailable</div>
-    <button ng-hide='book.borrower' ng-click='borrow(book)'>Borrow</button>
-    <div>---------</div>
-  </div>
+  <p ng-show='notborrowed'>There was an error when trying to borrow the book</p>
+  <p ng-show='borrowed'>You have successfully borrowed <b>{{borrowedTitle}}</b></p>
 
+
+  <table class = "table table-bordered table-striped">
+   <tr>
+    <th>Owner</th>
+    <th>Comments</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  <tr ng-repeat='book in physicalBooks'>
+    <td>{{book.owner.username}}</td>
+    <td>{{book.comment}}</td>
+    <td><span ng-hide='book.borrower'>Available</span><span ng-show='book.borrower'>Unavailable</span></td>
+    <td><button ng-hide='book.borrower' ng-click='borrow(book)' class="btn btn-sm btn-success">Borrow</button></td>
+  </tr>
+</table>
 
 </div>
