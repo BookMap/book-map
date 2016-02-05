@@ -4,11 +4,11 @@ angular.module( 'controllers' )
     $scope.invalidId = false;
     $scope.invalidBorrow = false;
     $http.get('/api/books?unique_book=' + $routeParams.book_id)
-      .then( res => {
+      .then( function(res) {
         $scope.uniqueBook = res.data[0].unique_book;
         $scope.physicalBooks = res.data;
       })
-      .catch( err => {
+      .catch( function(err) {
         $scope.invalidId = true;
       });
     $scope.borrow = function (book) {
@@ -16,10 +16,10 @@ angular.module( 'controllers' )
         method: 'PATCH',
         url: '/api/profile/books/' + book._id + '?request=borrow'
       })
-        .then( res => {
+        .then( function(res) {
           book.borrower = true;
         })
-        .catch( err => {
+        .catch( function(err) {
           book.invalidBorrow = true;
         });
     }

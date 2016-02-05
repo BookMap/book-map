@@ -8,7 +8,6 @@ function find (query, req, res, populateItem) {
       .lean()
       .exec( (err, books) => {
         if(err) {
-                  console.log(err);
                   return res.status(500).send(err[0]);
                 }
         res.send(books);

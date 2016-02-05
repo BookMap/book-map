@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
     if (searchTerms.length === 1){
       Book.find({}).populate('availability').lean().exec( (err, books) => {
         if(err) {
-          console.log(err);
           return res.status(500).send(err[0]);
         }
         res.send(books);
@@ -33,7 +32,6 @@ router.get('/', (req, res, next) => {
       else if (queries.bookId) {
         Book.findById(queries.bookId).lean().exec( (err, book) => {
           if (err) {
-            console.log(err);
             return res.status(500).send(err[0]);
           }
           res.send(book);
@@ -51,7 +49,6 @@ router.get('/', (req, res, next) => {
           .lean()
           .exec( (err, users) => {
             if (err) {
-              console.log(err);
               return res.status(500).send(err[0]);
             }
             res.send(users);

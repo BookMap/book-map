@@ -7,7 +7,6 @@ router.get('/', (req, res, next) => {
       .lean()
       .exec((err, users) => {
         if (err) {
-          console.log(err);
           res.status(500).send(err[0]);
         }
         res.send(users);
