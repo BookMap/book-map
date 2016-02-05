@@ -159,7 +159,6 @@ describe('Restricted Router', () => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.be.object;
-        console.log('TEST');
         done();
       });
   });
@@ -186,5 +185,5 @@ describe('Restricted Router', () => {
         expect(res.body).to.be.object;
         done();
       });
-  })
+  });
 });

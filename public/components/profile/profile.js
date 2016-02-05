@@ -29,22 +29,9 @@ angular.module('controllers')
             $scope.borrowing = res.data;
             })
         .catch( err => {
-            console.log(err[0]);
+            console.log(err);
         });
 
-
-      $scope.addbook = function(  title, author, comment ){
-
-          console.log('values', title, author, comment);
-
-          $http.post( '/api/profile/books',
-                    {   title: title,
-                        author: author,
-                        comment: comment}
-                    )
-              .then (console.log('wrote new record to book list') )
-              .catch(err)
-      };
 
 
       $http.get('/api/profile/books?search=lending')
@@ -55,10 +42,36 @@ angular.module('controllers')
         console.log(err[0]);
       });
 
-      $scope.delete = function(book_id, index) {
+      $scope.addbook = function(  title, author, comment ){
+
+          console.log('values', title, author, comment);
+
+          $http.post( '/api/profile/books',
+                    {   title: title,
+                        author: author,
+                        comment: comment}
+                    )
+              .then (res => {
+                console.log(res.data);
+                $scope.books.push(res.data);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+      };
+
+      $scope.returnBook = function(borrowedBook, index) {
+        $http.patch(`api/profile/books/${borrowedBook._id}?request=return`)
+             .then( res => {
+                console.log(res.data);
+                $scope.borrowing.splice(index, 1);
+             });
+      }
+
+      $scope.delete = function(book, index) {
         $http({
           method: 'DELETE',
-          url: '/api/profile/delete/' + book_id
+          url: '/api/profile/books/' + book._id
         }).then( res => {
           $scope.deleteResponse = res.data;
           $scope.books.splice(index, 1);
