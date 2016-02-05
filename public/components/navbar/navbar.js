@@ -17,18 +17,13 @@ angular.module('controllers')  //components
                         $scope.picture = 'https://graph.facebook.com/'
                             + $scope.id + '/picture?height=30&width=30';
                         })
-                        .catch(function(err){console.log(err,': Could not get small picture.');                              })
+                        .catch(function(err){console.log(err,': Could not get small                                 picture.'); })
 
                     }
 
                     $scope.fblogout = function () {
                         $window.localStorage.token = '';
-                        $scope.username="";
-                        $scope.id='';
-
-
                         $window.location.assign('/#');
-                        console.log("logging out of facebook");
                     };
 
 

@@ -17,7 +17,7 @@ li {
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
 
-.toptitle {display: inline-block;}
+.toptitle {display: inline-block; padding-left: 20px;}
 
 .detailsBtn { text-align: right;}
 
