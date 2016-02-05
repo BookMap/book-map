@@ -65,7 +65,6 @@ router.get('/books', (req, res, next) => {
   }
   PhysicalBook.find({borrower: req.user_id}).populate('owner unique_book')
   .exec( (err, books) => {
-    console.log(books);
     if (err) res.status(500).send(err);
     else res.send(books);
   });
@@ -142,6 +141,7 @@ router.patch('/books/:book_id', (req, res, next) => {
   var updatedBook;
   PhysicalBook.findById(req.params.book_id)
   .then( book => {
+    console.log(book);
     book.borrower = undefined;
     updatedBook = book;
     return book.save();
@@ -153,6 +153,7 @@ router.patch('/books/:book_id', (req, res, next) => {
   })
   .then( book => {
     book.availability.push(owner);
+    console.log(book);
     book.save();
   })
   .catch( err => {

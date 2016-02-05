@@ -1,0 +1,14 @@
+<div>The Admin Page</div>
+
+<div ng-repeat='title in titles'>
+  <div>{{title.title}}</div>
+  <div>{{title.author}}</div>
+  <div>{{title.summary}}</div>
+  <div ng-repeat='owner in title.availability'>Owners of this title:
+    <div>{{owner.username}}</div>
+    <div>{{owner.user_id}}</div>
+    <div>{{owner.email}}</div>
+    <div>--------------</div>
+  </div>
+  <div>---------------------------------------------------</div>
+</div>

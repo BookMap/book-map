@@ -42,6 +42,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
         controller: 'BookDetailCtrl'
       })
 
+      .when('/admin', {
+        templateUrl: 'components/admin/admin.html',
+        controller: 'AdminCtrl'
+      })
+
       .otherwise({
           redirectTo: '/'
       });
