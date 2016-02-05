@@ -10,14 +10,14 @@ body{background-color: whitesmoke;
         background-color: #d4d4d4;
         height: 70px;}
 
-li {
-    list-style-type: none;
-}
+li {  list-style-type: none;  }
+
+a { text-decoration: none;}
 
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
 
-.toptitle {display: inline-block;}
+.toptitle {display: inline-block; padding-left: 20px;}
 
 .detailsBtn { text-align: right;}
 
@@ -42,5 +42,7 @@ li {
         margin-right: 20px;
         padding: 10px;
         box-shadow: 5px 5px 3px #888888;
+        text-decoration: none;
 
 }
+

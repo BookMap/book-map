@@ -3,13 +3,10 @@ angular.module('controllers')
     .controller( 'HomeCtrl', [ '$scope', '$http', '$window',
         function( $scope, $http, $window ) {
 
-            console.log("controller called");
-
             $scope.fblogout = function(){
                 $window.localStorage.token='';
                 $window.location.assign( '/#/home' );
-                console.log ("logging out of facebook");
-            };
+             };
 
             $http.get( '/api/users' ).then( function( res ) {
                     $scope.usersCount = res.data.length;
