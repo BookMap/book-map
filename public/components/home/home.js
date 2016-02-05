@@ -20,14 +20,15 @@ angular.module('controllers')
                 $scope.titlesCount = res.data.length;
             });
 
+
             $http.get('/api/books')
                 .then( res => {
                 $scope.bookCount = res.data.length;
-
-                for( ii=0; ii<res.data.length;  ii++){
-                    console.log(res.data[ii], "is borrowers", ii);
-
-                }
+                var tempborrow = res.data.filter( book => {
+                        return book.borrower;
+                    });
+                console.log (tempborrow.length, ' is borrowed ct');
+                $scope.borrowCount = tempborrow.length;
             });
 
         }
