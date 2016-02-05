@@ -2,8 +2,8 @@
     Search Title: <input ng-model="titleFilter"></input>
     Search Author: <input ng-model="authorFilter"></input>
 </div>
-
-<p>List of All Books Available for Borrowing</p>
+<br>
+<h4>Available Book Titles</h4>
 
 <table class = "table table-bordered table-striped">
 <tr>
@@ -16,6 +16,10 @@
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
     <td>{{book.availability.length}} copies</td>
-    <td><a ng-href="#/details/{{book._id}}">View Details</a></td>
+    <td>
+        <button class="btn btn-sm btn-success">
+            <a ng-href="#/details/{{book._id}}">View Details & Borrow</a>
+        </button>
+    </td>
   </tr>
 </table>
