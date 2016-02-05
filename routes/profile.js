@@ -133,7 +133,6 @@ router.patch('/books/:book_id', (req, res, next) => {
     book.save();
   })
   .catch( err => {
-    console.log(err);
     res.status(500).send(err);
   });
 });

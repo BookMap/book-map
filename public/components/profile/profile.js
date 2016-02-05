@@ -34,16 +34,19 @@ angular.module('controllers')
 
 
       $scope.addbook = function(  title, author, comment ){
-
-          console.log('values', title, author, comment);
-
-          $http.post( '/api/profile/books',
-                    {   title: title,
-                        author: author,
-                        comment: comment}
-                    )
-              .then (console.log('wrote new record to book list') )
-              .catch(err)
+          $http({
+            method: 'POST',
+            url: '/api/profile/books',
+            body: {
+              title: title,
+              author: author,
+              comment: comment
+            }
+          })
+            .then (console.log('wrote new record to book list') )
+            .catch( err => {
+              res.status(500).send(err);
+            });
       };
 
 
