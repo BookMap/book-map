@@ -14,8 +14,6 @@ li {  list-style-type: none;  }
 
 a { text-decoration: none;}
 
-a.factbox{text-decoration-color: red;}
-
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
 
