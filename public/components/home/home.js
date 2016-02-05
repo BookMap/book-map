@@ -16,12 +16,12 @@ angular.module('controllers')
             });
 
             $http.get('/api/titles')
-                .then( res => {
+                .then( function (res)  {
                 $scope.titlesCount = res.data.length;
             });
 
             $http.get('/api/books')
-                .then( res => {
+                .then( function (res) {
                 $scope.bookCount = res.data.length;
 
                 for( ii=0; ii<res.data.length;  ii++){
