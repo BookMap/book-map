@@ -8,56 +8,53 @@ angular.module('controllers')
       }
 
       $http.get('/api/profile/')
-      .then( function(res) {
-          $scope.username = res.data.username;
-          $scope.id = res.data.id;
-          $scope.about = res.data.about;
-          $scope.picture = 'https://graph.facebook.com/' + $scope.id + '/picture?height=200&width=200';
-          $http.get('/api/books?owner=' + $scope.id)
-              .then( function(res) {
-                $scope.books = res.data;
-                })
-              .catch( function(err){
-                console.log(err[0]);
-                });
+            .then( function(res) {
+              $scope.username = res.data.username;
+              $scope.id = res.data.id;
+              $scope.about = res.data.about;
+              $scope.picture = 'https://graph.facebook.com/' + $scope.id + '/picture?height=200&width=200';
+              $http.get('/api/books?owner=' + $scope.id)
+                    .then( function(res) {
+                      $scope.books = res.data;
+                      })
+                    .catch( function(err){
+                      console.log(err[0]);
+                    });
             })
             .catch( function(err) { console.log( err[0] ); });
 
 
       $http.get('/api/profile/books?search=borrowing')
-         .then( function(res) {
-            $scope.borrowing = res.data;
+           .then( function(res) {
+              $scope.borrowing = res.data;
             })
-        .catch( function(err) {
-            console.log(err);
-        });
+            .catch( function(err) {
+                console.log(err);
+            });
 
 
 
       $http.get('/api/profile/books?search=lending')
-      .then( function(res) {
-        $scope.lending = res.data;
-      })
-      .catch( function(err) {
-        console.log(err[0]);
-      });
+            .then( function(res) {
+              $scope.lending = res.data;
+            })
+            .catch( function(err) {
+              console.log(err[0]);
+            });
 
       $scope.addbook = function(  title, author, comment ){
-
-          console.log('values', title, author, comment);
-
           $http.post( '/api/profile/books',
                     {   title: title,
                         author: author,
                         comment: comment}
                     )
-              .then (function(res) {
-                console.log(res.data);
-                $scope.books.push(res.data);
-              })
-              .catch(function(err) {
-                console.log(err);
-              });
+                .then (function(res) {
+                  console.log(res.data);
+                  $scope.books.push(res.data);
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
       };
 
       $scope.returnBook = function(borrowedBook, index) {
