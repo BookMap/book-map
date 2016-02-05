@@ -13,7 +13,7 @@ angular.module('controllers')  //components
                     //}
 
                     $http.get('/api/profile/')
-                        .then( res => {
+                        .then( function(res) {
                         $scope.username = res.data.username;
                         $scope.id = res.data.id;
                         //$scope.about = res.data.about;
