@@ -1,6 +1,8 @@
 angular.module( 'controllers' )
 .controller('BookDetailCtrl', [ '$scope', '$routeParams', '$http',
   function( $scope, $routeParams, $http ) {
+    $scope.borrowed = false;
+    $scope.notborrowed = false;
     $scope.invalidId = false;
     $scope.invalidBorrow = false;
     $http.get('/api/books?unique_book=' + $routeParams.book_id)
@@ -17,10 +19,14 @@ angular.module( 'controllers' )
         url: '/api/profile/books/' + book._id + '?request=borrow'
       })
         .then( function(res) {
+          $scope.borrowedTitle = res.data.unique_book.title;
           book.borrower = true;
+          $scope.borrowed = true;
+          console.log(res.data.unique_book.title);
         })
         .catch( function(err) {
           book.invalidBorrow = true;
+          $scope.notborrowed = true;
         });
     }
 

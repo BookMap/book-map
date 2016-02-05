@@ -7,10 +7,9 @@ angular.module('controllers')  //components
 
             controller: [ '$scope', '$http', '$window',
                 function( $scope, $http, $window ) {
-
                      if ($window.localStorage.token) {
                         $http.get('/api/profile/')
-                            .then(  function (res) {
+                             .then(  function (res) {
                             $scope.username = res.data.username;
                         $scope.id = res.data.id;
                         //$scope.about = res.data.about;
@@ -19,13 +18,13 @@ angular.module('controllers')  //components
                         })
                         .catch(function(err){console.log(err,': Could not get small                                 picture.'); })
 
+
                     }
 
                     $scope.fblogout = function () {
                         $window.localStorage.token = '';
                         $window.location.assign('/#');
                     };
-
 
                     $scope.getuser = function (username) {
 
@@ -40,13 +39,8 @@ angular.module('controllers')  //components
                                 name: user.username,
                                 about: user.about
                             });
-
                         }
                     }
-
-
-
-
                 }]
         }
     });

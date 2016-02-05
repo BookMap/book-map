@@ -14,6 +14,10 @@ li {
     list-style-type: none;
 }
 
+a { text-decoration: none;}
+
+a factbox {color: yellow;}
+
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
 
@@ -43,4 +47,11 @@ li {
         padding: 10px;
         box-shadow: 5px 5px 3px #888888;
 
+}
+
+.factboxlink{ background-color: red;}
+
+
+a:hover {
+    background-color: yellow;
 }
