@@ -10,13 +10,11 @@ body{background-color: whitesmoke;
         background-color: #d4d4d4;
         height: 70px;}
 
-li {
-    list-style-type: none;
-}
+li {  list-style-type: none;  }
 
 a { text-decoration: none;}
 
-a factbox {color: yellow;}
+a.factbox{text-decoration-color: red;}
 
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
@@ -46,12 +44,7 @@ a factbox {color: yellow;}
         margin-right: 20px;
         padding: 10px;
         box-shadow: 5px 5px 3px #888888;
+        text-decoration: none;
 
 }
 
-.factboxlink{ background-color: red;}
-
-
-a:hover {
-    background-color: yellow;
-}
