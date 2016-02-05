@@ -33,6 +33,7 @@ function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
       		req.user_id = payload.user_id;
+					if (payload.admin) req.admin = true;
       		next();
     	})
 		.catch( err => {
