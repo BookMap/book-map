@@ -9,11 +9,16 @@
     <a href="#/users"> All Users</a>
     &nbsp; &nbsp; | &nbsp; &nbsp;
 
-
     <span ng-show="username">
+
+        <a ng-click="getUser(username)">Public Profile</a>
+
+        &nbsp; &nbsp;
+
         <a href="#/profile"> {{username}}'s Account </a>
-        <img src={{picture}} class="img-thumbnail">
-            &nbsp; &nbsp;
+        <img src={{picture}} >
+
+        &nbsp; &nbsp;
 
         <a ng-click ="fblogout()" href="/#/home">
             Logout</a>
