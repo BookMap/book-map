@@ -11,15 +11,16 @@ angular.module('controllers')  //components
                     //if ( !$window.localStorage.token ) {
                     //      $window.location.assign( '/#' );
                     //}
-
-                    $http.get('/api/profile/')
-                        .then( res => {
+                    if ($window.localStorage.token) {
+                      $http.get('/api/profile/')
+                      .then( res => {
                         $scope.username = res.data.username;
                         $scope.id = res.data.id;
                         //$scope.about = res.data.about;
                         $scope.picture = 'https://graph.facebook.com/'
-                            + $scope.id + '/picture?height=30&width=30';
-                    })
+                        + $scope.id + '/picture?height=30&width=30';
+                      })
+                    }
 
                     $scope.fblogout = function () {
                         $window.localStorage.token = '';
@@ -34,5 +35,3 @@ angular.module('controllers')  //components
                 }]
         }
     });
-
-
