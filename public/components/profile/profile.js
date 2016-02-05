@@ -49,8 +49,10 @@ angular.module('controllers')
                         comment: comment}
                     )
                 .then (function(res) {
-                  console.log(res.data);
-                  $scope.books.push(res.data);
+                  $scope.books.unshift(res.data);
+                  $scope.title = '';
+                  $scope.author = '';
+                  $scope.comment = '';
                 })
                 .catch(function(err) {
                   console.log(err);
