@@ -33,7 +33,7 @@
     <td>{{book.unique_book.title}}</td>
     <td>{{book.unique_book.author}}</td>
     <td>{{book.borrower.username}}</td>
-    <td><button ng-hide=book.borrower ng-click='delete(book.unique_book._id, $index)' class="btn btn-sm btn-danger">Delete</button></td>
+    <td><button ng-hide=book.borrower ng-click='delete(book, $index)' class="btn btn-sm btn-danger">Delete</button></td>
   </tr>
 </table>
 
@@ -53,7 +53,7 @@
     <td>{{borrowedBook.unique_book.title}}</td>
     <td>{{borrowedBook.unique_book.author}}</td>
     <td>{{borrowedBook.owner.username}}</td>
-    <td><button ng-click='someFunction()' class="btn btn-sm btn-warning">Return</button></td>
+    <td><button ng-click='returnBook(borrowedBook, $index)' class="btn btn-sm btn-warning">Return</button></td>
   </tr>
 </table>
 
