@@ -3,7 +3,13 @@ angular.module( 'controllers' )
 
   function( $scope, $http ) {
 
-    //some stuff here
+    $http.get('api/titles?count=true')
+      .then( function (res) {
+        $scope.titles = res.data;
+      })
+      .catch( function(err) {
+        $scope.$titleError = "Could not get titles";
+      });
 
   }
 
