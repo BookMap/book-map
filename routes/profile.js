@@ -109,7 +109,7 @@ router.patch('/', (req, res) => {
 //book_id must be physical book id
 router.patch('/books/:book_id', (req, res, next) => {
   if (req.query.request !== 'borrow') {
-    next();
+    return next();
   }
   var owner;
   PhysicalBook.findOneAndUpdate({
