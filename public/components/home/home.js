@@ -23,11 +23,11 @@ angular.module('controllers')
             $http.get('/api/books')
                 .then( function (res) {
                 $scope.bookCount = res.data.length;
-
-                for( ii=0; ii<res.data.length;  ii++){
-                    console.log(res.data[ii], "is borrowers", ii);
-
-                }
+                var tempborrow = res.data.filter(  (book) => {
+                        return book.borrower;
+                    });
+                console.log (tempborrow.length, ' is borrowed ct');
+                $scope.borrowCount = tempborrow.length;
             });
 
         }
