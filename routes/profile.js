@@ -45,7 +45,7 @@ router.post('/books', (req, res) => {
 
 router.get('/books', (req, res, next) => {
   if (req.query.search !== 'lending') {
-    next();
+    return next();
   }
   PhysicalBook.find({
     owner: req.user_id,
@@ -61,16 +61,13 @@ router.get('/books', (req, res, next) => {
 
 router.get('/books', (req, res, next) => {
   if (req.query.search !== 'borrowing') {
-    next();
+    return next();
   }
-  PhysicalBook.find({
-    borrower: req.user_id,
-  }).populate('owner unique_book').select('-__v -borrower')
-  .then( books => {
-    res.send(books);
-  })
-  .catch( err => {
-    res.status(500).send(err[0]);
+  PhysicalBook.find({borrower: req.user_id}).populate('owner unique_book')
+  .exec( (err, books) => {
+    console.log(books);
+    if (err) res.status(500).send(err);
+    else res.send(books);
   });
 });
 
