@@ -7,17 +7,15 @@ angular.module('controllers')  //components
 
             controller: [ '$scope', '$http', '$window',
                 function( $scope, $http, $window ) {
-
                      if ($window.localStorage.token) {
                         $http.get('/api/profile/')
-                            .then(  function (res) {
-                            $scope.username = res.data.username;
-                        $scope.id = res.data.id;
-                        //$scope.about = res.data.about;
-                        $scope.picture = 'https://graph.facebook.com/'
-                            + $scope.id + '/picture?height=30&width=30';
-                        })
-                        .catch(function(err){console.log(err,': Could not get small picture.');                              })
+                            .then( function (res) {
+                                $scope.username = res.data.username;
+                                $scope.id = res.data.id;
+                                $scope.picture = 'https://graph.facebook.com/'
+                                    + $scope.id + '/picture?height=30&width=30';
+                            })
+                            .catch(function(err){console.log(err,': Could not get small picture.');                              })
 
                     }
 
@@ -30,7 +28,6 @@ angular.module('controllers')  //components
                         $window.location.assign('/#');
                         console.log("logging out of facebook");
                     };
-
 
                     $scope.getuser = function (username) {
 
@@ -45,13 +42,8 @@ angular.module('controllers')  //components
                                 name: user.username,
                                 about: user.about
                             });
-
                         }
                     }
-
-
-
-
                 }]
         }
     });
