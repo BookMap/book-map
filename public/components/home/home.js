@@ -1,7 +1,7 @@
 angular.module('controllers')
 
-    .controller( 'HomeCtrl', [ '$scope', '$http', '$window',
-        function( $scope, $http, $window ) {
+    .controller( 'HomeCtrl', [ '$rootScope','$scope', '$http', '$window',
+        function( $rootScope, $scope, $http, $window ) {
 
             $scope.fblogout = function(){
                 $window.localStorage.token='';
@@ -26,6 +26,8 @@ angular.module('controllers')
                 console.log (tempborrow.length, ' is borrowed ct');
                 $scope.borrowCount = tempborrow.length;
             });
+
+
 
         }
     ]);

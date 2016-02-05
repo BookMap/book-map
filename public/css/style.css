@@ -10,6 +10,16 @@ body{background-color: whitesmoke;
         background-color: #d4d4d4;
         height: 70px;}
 
+.navbar1-right {border: solid lightgrey 1px;
+    padding:10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #d4d4d4;
+    height: 70px;
+    text-align: right;}
+
+
+
 li {  list-style-type: none;  }
 
 a { text-decoration: none;}

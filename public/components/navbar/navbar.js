@@ -5,42 +5,49 @@ angular.module('controllers')  //components
             restrict: 'E',
             templateUrl: 'components/navbar/navbar.html',
 
-            controller: [ '$scope', '$http', '$window',
-                function( $scope, $http, $window ) {
+            controller: [ '$rootScope', '$scope', '$http', '$window',
+                function( $rootScope, $scope, $http, $window ) {
                      if ($window.localStorage.token) {
                         $http.get('/api/profile/')
                              .then(  function (res) {
-                            $scope.username = res.data.username;
-                        $scope.id = res.data.id;
-                        //$scope.about = res.data.about;
-                        $scope.picture = 'https://graph.facebook.com/'
-                            + $scope.id + '/picture?height=30&width=30';
+
+                            $rootScope.User = res.data.username;
+                            $rootScope.Id  = res.data.id;
+                            $rootScope.About = res.data.about;
+                            $rootScope.Picture = 'https://graph.facebook.com/'
+                            + $rootScope.Id + '/picture?height=30&width=30';
+                            $rootScope.PictureBig = 'https://graph.facebook.com/'
+                                + $rootScope.Id + '/picture?height=100&width=100';
+
                         })
                         .catch(function(err){console.log(err,': Could not get small                                 picture.'); })
-
-
                     }
 
                     $scope.fblogout = function () {
                         $window.localStorage.token = '';
-                        $window.location.assign('/#');
+                        $window.location.assign('/');
                     };
 
-                    $scope.getuser = function (username) {
+                    $scope.login = function(){
 
-                        $http.get('/api/users')
-                            .then(function (res) {
-                                $scope.users = res.data;
-                            } );
 
-                        $scope.getUser = function (user) {
-                            $window.localStorage.temp = JSON.stringify({
-                                id: user._id,
-                                name: user.username,
-                                about: user.about
-                            });
-                        }
                     }
+
+                    //$scope.getuser = function (username) {
+                    //
+                    //    $http.get('/api/users')
+                    //        .then(function (res) {
+                    //            $scope.users = res.data;
+                    //        } );
+                    //
+                    //    $scope.getUser = function (username) {
+                    //        $window.localStorage.temp = JSON.stringify({
+                    //            id: user._id,
+                    //            name: user.username,
+                    //            about: user.about
+                    //        });
+                    //    }
+                    //}
                 }]
         }
     });
