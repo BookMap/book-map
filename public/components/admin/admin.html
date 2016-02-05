@@ -1,0 +1,11 @@
+<div>The Admin Page</div>
+
+<div ng-repeat='title in titles'>
+  <div>ID: {{title._id}}</div>
+  <div>Title: {{title.title}}</div>
+  <div>Author: {{title.author}}</div>
+  <div>Summary: {{title.summary}}</div>
+  <div>Copies in circulation: {{title.copies}}</div>
+  <div>Available copies not being borrowed: {{title.availability.length}}</div>
+  <div>---------------------------------------------------</div>
+</div>

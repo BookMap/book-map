@@ -65,7 +65,6 @@ router.get('/books', (req, res, next) => {
   }
   PhysicalBook.find({borrower: req.user_id}).populate('owner unique_book')
   .exec( (err, books) => {
-    console.log(books);
     if (err) res.status(500).send(err);
     else res.send(books);
   });
