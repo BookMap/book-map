@@ -26,13 +26,8 @@ angular.module('controllers')
 
       $http.get('/api/profile/books?search=borrowing')
          .then( res => {
-           console.log(res.data);
-          //  res.data.forEach( book => {
-          //    console.log(book);
-          //  })
-          //  console.log('borrowed books', res.data);
             $scope.borrowing = res.data;
-            })
+          })
         .catch( err => {
             console.log(err);
         });
@@ -41,7 +36,6 @@ angular.module('controllers')
 
       $http.get('/api/profile/books?search=lending')
       .then( res => {
-        //console.log('lent books', res.data)
         $scope.lending = res.data;
       })
       .catch( err => {
