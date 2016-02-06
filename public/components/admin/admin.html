@@ -1,20 +1,42 @@
 <h3>The Admin Page</h3>
 
-<table class = "table table-bordered table-striped">
-<tr>
-    <th>ID</th>
+<br><br>
+<div class="page-header">
+  <h3>Here's a list of books in the system by title</h3>
+</div>
+<div ng-show=error>Error Occurred: {{error}}</div>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Book ID</th>
     <th>Title</th>
     <th>Author</th>
     <th>Summary</th>
-    <th>Coppy in Circulation</th>
-    <th>Available copies not being borrowed</th>
+    <th>Copies</th>
+    <th>Available copies</th>
+    <th>Action</th>
   </tr>
-  <tr ng-repeat='title in titles | filter: { title: titleFilter, author: authorFilter}'>
+  <tr ng-repeat='title in titles'>
     <td>{{title._id}}</td>
     <td>{{title.title}}</td>
     <td>{{title.author}}</td>
     <td>{{title.summary}}</td>
     <td>{{title.copies}}</td>
     <td>{{title.availability.length}}</td>
+    <td>
+      <button ng-hide='title.copies > 0' class="btn btn-sm btn-danger"
+      ng-click='delete(title, $index)'>
+        Delete
+      </button>
+      <button ng-click='populate(title, $index)' class="btn btn-sm btn-warning">
+        Edit
+      </button>
+    </td>
   </tr>
 </table>
+
+<form id="editBook" ng-submit="edit(editId, editTitle, editAuthor, editSummary, editIndex)" class = "form-horizontal">
+  Title:<input type="text" size="100" data-ng-model="editTitle" placeholder={{editTitle}} class="form-control">
+  Author:<input type="text" size="100" data-ng-model="editAuthor" placeholder ={{editAuthor}} class="form-control">
+  Summary:<input type="text" size="100" data-ng-model="editSummary" placeholder={{editSummary}} class="form-control">
+  <button class="btn btn-sm btn-success">Edit Book</button>
+</form>

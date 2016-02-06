@@ -33,7 +33,9 @@ function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
       		req.user_id = payload.user_id;
-					if (payload.admin) req.admin = true;
+					if (payload.admin) {
+						req.admin = true;
+					}
       		next();
     	})
 		.catch( err => {
@@ -45,7 +47,7 @@ app.use('/api/profile', auth, profile);
 app.use('/api/books', books);
 app.use('/api/titles',titles);
 app.use('/api/users', users);
-app.use('/api/admin', admin);
+app.use('/api/admin', auth, admin);
 app.use(function(err, req, res, next) {
   res.status(500).send(err);
 });

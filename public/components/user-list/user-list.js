@@ -2,6 +2,8 @@
 angular.module( 'controllers' ).controller( 'UserListCtrl', [ '$rootScope','$scope', '$http', '$window',
     function($rootScope, $scope, $http, $window ) {
         $http.get( '/api/users' ).then( function( res ) {
+
+            console.log(res.data, ' is users');
           $scope.users = res.data;
          });
 
