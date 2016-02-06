@@ -21,10 +21,10 @@ angular.module('controllers')
                 .then( function (res) {
                 $scope.bookCount = res.data.length;
                 var tempborrow = res.data.filter(  (book) => {
-                        return book.borrower;
+                    return book.borrower;
+
                     });
-                console.log (tempborrow.length, ' is borrowed ct');
-                $scope.borrowCount = tempborrow.length;
+                 $scope.borrowCount = tempborrow.length;
             });
 
 
