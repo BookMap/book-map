@@ -40,21 +40,55 @@ a { text-decoration: none;}
 
 .bignumber {font-size: 8rem; text-align: center; margin: 5px; padding: 5px;}
 
-.gridthing { display: flex; flex-wrap: wrap; }
+.gridthing { display: flex; flex-wrap: wrap;  }
 
-.factbox {font-size: 1.1rem;
+
+
+.surroundfactbox{ height:300px;
+        width: 300px;
         text-align: center;
+        margin: 0 auto;}
+
+.factbox {font-size: 1.8rem;
+        margin: 0 auto;
+
         background-color: lightgreen;
         border-radius: 30px;
         height: 230px;
         width: 230px;
         margin: 10px;
         margin-right: 20px;
-        padding: 10px;
+        padding: 15px;
+
         box-shadow: 5px 5px 3px #888888;
         text-decoration: none;
 
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
 }
+
+.factbox:hover{  height: 250px;
+                 width: 250px;
+                opacity: 0.8;
+                color: black;
+                padding-top: 25px;
+                padding-left:25px;
+                font-size:2rem;
+}
+
+
+.factbox.expander.clicker:hover {
+    -webkit-transform: transform: scale(1.1);
+    -moz-transform: transform: scale(1.1);
+    -o-transform: transform: scale(1.1);
+    -ms-transform: transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
 
 .page-header{ height: 30px;}
 
