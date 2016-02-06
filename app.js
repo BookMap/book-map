@@ -32,8 +32,11 @@ app.use('/login', login);
 function auth( req, res, next ) {
 	token.verify( req.headers.token )
 		.then( payload => {
+					console.log(payload.admin);
       		req.user_id = payload.user_id;
-					if (payload.admin) req.admin = true;
+					if (payload.admin) {
+						req.admin = true;
+					}
       		next();
     	})
 		.catch( err => {
