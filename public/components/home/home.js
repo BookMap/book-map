@@ -1,12 +1,7 @@
 angular.module('controllers')
 
-    .controller( 'HomeCtrl', [ '$scope', '$http', '$window',
-        function( $scope, $http, $window ) {
-
-            $scope.fblogout = function(){
-                $window.localStorage.token='';
-                $window.location.assign( '/#/home' );
-             };
+    .controller( 'HomeCtrl', [ '$rootScope','$scope', '$http', '$window',
+        function( $rootScope, $scope, $http, $window ) {
 
             $http.get( '/api/users' ).then( function( res ) {
                     $scope.usersCount = res.data.length;
@@ -26,6 +21,8 @@ angular.module('controllers')
                 console.log (tempborrow.length, ' is borrowed ct');
                 $scope.borrowCount = tempborrow.length;
             });
+
+
 
         }
     ]);

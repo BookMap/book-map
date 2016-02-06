@@ -14,6 +14,7 @@ const User = new Schema({
     type: String,
     require: true
   },
+	admin: Boolean,
   about: String
 });
 

@@ -27,6 +27,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
           controller: 'PublicProfileCtrl'
       })
 
+      .when('/publicProfile/:id', {
+          templateUrl: 'components/public-profile/public-profile.html',
+          controller: 'PublicProfileCtrl'
+      })
+
       .when('/profile', {
             templateUrl: 'components/profile/profile.html',
             controller: 'ProfileCtrl'
@@ -40,6 +45,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
       .when('/details/:book_id', {
         templateUrl: 'components/book-detail/book-detail.html',
         controller: 'BookDetailCtrl'
+      })
+
+      .when('/admin', {
+        templateUrl: 'components/admin/admin.html',
+        controller: 'AdminCtrl'
       })
 
       .otherwise({
