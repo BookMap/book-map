@@ -1,76 +1,86 @@
 <div class="page-header">
-  <h3> Private Account Page for {{username}} </h3>
+    <h3> Private Account Page for {{username}} </h3>
 </div>
-<br><br>
+<br>
 <img src={{picture}} class="img-thumbnail img-responsive">
-<a ng-click="getUser(username)" href="/#/publicProfile">&nbsp; Switch to My Public Profile</a>
-<br><br>
-<div class="page-header">
-  <h3>Enter a New Book</h3>
+
+<div>
+    <a ng-click="getUser(username)" href="/#/publicProfile">&nbsp; Switch to My Public Profile</a>
 </div>
-<form id="makeBook" ng-submit="addbook( title, author, comment)" class = "form-horizontal">
-  <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title" class="form-control">
-  <input type="text" size="100" data-ng-model="author" placeholder ="Enter Author Name" class="form-control">
-  <input type="text" size="100" data-ng-model="comment" placeholder= "Enter Comment" class="form-control">
-  <button class="btn btn-sm btn-success">Create New Book Record</button>
+
+<br>
+<div class="page-header">
+    <h3>Enter a New Book</h3>
+</div>
+
+<form id="makeBook" ng-submit="addbook( title, author, comment)" class="form-horizontal">
+    <input type="text" size="100" data-ng-model="title" placeholder="Enter Book Title" class="form-control">
+    <input type="text" size="100" data-ng-model="author" placeholder="Enter Author Name" class="form-control">
+    <input type="text" size="100" data-ng-model="comment" placeholder="Enter Comment" class="form-control">
+    <button class="btn btn-sm btn-success">Create New Book Record</button>
 </form>
+<a name="addbook"></a>
 
 <br><br>
 
 <div class="page-header">
-  <h3>Your Books</h3>
+    <h3>Your Books</h3>
 </div>
 <div ng-show=deleteResponse>Successfully deleted {{deleteResponse.unique_book.title}}</div>
 
-<table class = "table table-bordered table-striped">
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Borrowed By</th>
-    <th>Action</th>
-  </tr>
-  <tr ng-repeat='book in books'>
-    <td>{{book.unique_book.title}}</td>
-    <td>{{book.unique_book.author}}</td>
-    <td>{{book.borrower.username}}</td>
-    <td><button ng-hide=book.borrower ng-click='delete(book, $index)' class="btn btn-sm btn-danger">Delete</button></td>
-  </tr>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Borrowed By</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat='book in books'>
+        <td>{{book.unique_book.title}}</td>
+        <td>{{book.unique_book.author}}</td>
+        <td>{{book.borrower.username}}</td>
+        <td>
+            <button ng-hide=book.borrower ng-click='delete(book, $index)' class="btn btn-sm btn-danger">Delete</button>
+        </td>
+    </tr>
 </table>
 
 <br><br>
 
 <div class="page-header">
-  <h3>Currently Borrowing</h3>
+    <h3>Currently Borrowing</h3>
 </div>
-<table class = "table table-bordered table-striped">
-   <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Owner</th>
-    <th>Action</th>
-  </tr>
-  <tr ng-repeat='borrowedBook in borrowing'>
-    <td>{{borrowedBook.unique_book.title}}</td>
-    <td>{{borrowedBook.unique_book.author}}</td>
-    <td>{{borrowedBook.owner.username}}</td>
-    <td><button ng-click='returnBook(borrowedBook, $index)' class="btn btn-sm btn-warning">Return</button></td>
-  </tr>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Owner</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat='borrowedBook in borrowing'>
+        <td>{{borrowedBook.unique_book.title}}</td>
+        <td>{{borrowedBook.unique_book.author}}</td>
+        <td>{{borrowedBook.owner.username}}</td>
+        <td>
+            <button ng-click='returnBook(borrowedBook, $index)' class="btn btn-sm btn-warning">Return</button>
+        </td>
+    </tr>
 </table>
 
 <br><br>
 
 <div class="page-header">
-  <h3>Currently Lending</h3>
+    <h3>Currently Lending</h3>
 </div>
-  <table class = "table table-bordered table-striped">
-   <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Borrower</th>
-  </tr>
-  <tr ng-repeat='lentBook in lending'>
-    <td>{{lentBook.unique_book.title}}</td>
-    <td>{{lentBook.unique_book.author}}</td>
-    <td>{{lentBook.borrower.username}}</td>
-  </tr>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Borrower</th>
+    </tr>
+    <tr ng-repeat='lentBook in lending'>
+        <td>{{lentBook.unique_book.title}}</td>
+        <td>{{lentBook.unique_book.author}}</td>
+        <td>{{lentBook.borrower.username}}</td>
+    </tr>
 </table>
