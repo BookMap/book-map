@@ -1,8 +1,19 @@
-<div>
-    Search Title: <input ng-model="titleFilter"></input>
-    Search Author: <input ng-model="authorFilter"></input>
-</div>
-<br>
+    <span>
+        <div class="searchbox">
+            <div class="glyphicon glyphicon-search"></div>
+            <input ng-model="titleFilter" placeholder="Title"></input>
+        </div>
+    </span>
+
+    <span>
+         <div class="searchbox" >
+             <div class="glyphicon glyphicon-search"></div>
+
+             <input ng-model="authorFilter" placeholder="Author"></input>
+        </div>
+    </span>
+
+<br><br>
 <h4>Available Book Titles</h4>
 
 <table class = "table table-bordered table-striped">

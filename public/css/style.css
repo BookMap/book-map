@@ -59,3 +59,5 @@ a { text-decoration: none;}
 .page-header{ height: 30px;}
 
 .about {height: 50px; background-color: #d4d4d4; border: 1px solid grey;}
+
+.searchbox{width: 300px;  display: inline-block;}
