@@ -31,7 +31,7 @@ angular.module( 'controllers' )
         }
       })
       .catch( function(err) {
-        $scope.error = err;
+        $scope.error = 'Could not delete';
       });
     }
 
@@ -64,7 +64,7 @@ angular.module( 'controllers' )
         }
       })
       .catch( function(err) {
-        $scope.error = err;
+        $scope.error = 'Could not edit';
       });
 
     }
