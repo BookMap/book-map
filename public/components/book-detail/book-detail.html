@@ -4,8 +4,11 @@
   </div>
   <div ng-show='uniqueBook'>
     <h3>{{ uniqueBook.title }} by {{ uniqueBook.author }}</h3>
+      <br>
+    <h4>Summary</h4>
+      <p>{{ uniqueBook.summary }}</p>
+      <br>
     <h4>Available Copies of this Title:</h4>
-    <p>{{ uniqueBook.summary }}</p>
   </div>
   <hr />
 

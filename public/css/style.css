@@ -8,7 +8,7 @@ body{background-color: whitesmoke;
         margin: 10px;
         border-radius: 5px;
         background-color: #d4d4d4;
-        height: 70px;}
+        height: 50px;}
 
 .navbar1-right {border: solid lightgrey 1px;
     padding:10px;
@@ -38,13 +38,13 @@ a { text-decoration: none;}
             padding: 5px; margin: 10px;
             background-color: antiquewhite;}
 
-.bignumber {font-size: 4rem; text-align: center; margin: 5px; padding: 5px;}
+.bignumber {font-size: 8rem; text-align: center; margin: 5px; padding: 5px;}
 
 .gridthing { display: flex; flex-wrap: wrap; }
 
 .factbox {font-size: 1.1rem;
         text-align: center;
-        background-color: darkturquoise;
+        background-color: lightgreen;
         border-radius: 30px;
         height: 230px;
         width: 230px;
@@ -56,3 +56,6 @@ a { text-decoration: none;}
 
 }
 
+.page-header{ height: 30px;}
+
+.about {height: 50px; background-color: #d4d4d4; border: 1px solid grey;}
