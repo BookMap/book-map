@@ -27,6 +27,11 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
           controller: 'PublicProfileCtrl'
       })
 
+      .when('/publicProfile/:id', {
+          templateUrl: 'components/public-profile/public-profile.html',
+          controller: 'PublicProfileCtrl'
+      })
+
       .when('/profile', {
             templateUrl: 'components/profile/profile.html',
             controller: 'ProfileCtrl'
