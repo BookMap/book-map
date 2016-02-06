@@ -13,4 +13,17 @@ router.get('/', (req, res, next) => {
       });
 });
 
+router.get('/:userid', (req, res, next) => {
+
+    User.findById( req.params.userid )
+        .lean()
+        .exec((err, users) => {
+            if (err) {
+                res.status(500).send(err[0]);
+            }
+            res.send(users);
+        });
+});
+
+
 module.exports = router;

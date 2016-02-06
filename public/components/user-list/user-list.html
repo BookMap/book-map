@@ -9,9 +9,11 @@
   </div>
   <br>
   <ul class="list-group">
-      <li ng-repeat="user in users | filter: { username: typeFilter}" ><a href="#/publicProfile" ng-click="getUser(user)" class="list-group-item">{{user.username}}</a></li>
+      <li ng-repeat="user in users | filter: { username: typeFilter}" >
+          <a  ng-href = "#/publicProfile/{{user._id}}"    class="list-group-item">{{user.username}}</a></li>
   </ul>
 
 </div>
 </div>
+
 <!--ng-href='#/users/{{ user.id }}'-->
