@@ -20,7 +20,7 @@ angular.module('controllers')
             $http.get('/api/books')
                 .then( function (res) {
                 $scope.bookCount = res.data.length;
-                var tempborrow = res.data.filter(  (book) => {
+                var tempborrow = res.data.filter(  function(book) {
                         return book.borrower;
                     });
                 console.log (tempborrow.length, ' is borrowed ct');
