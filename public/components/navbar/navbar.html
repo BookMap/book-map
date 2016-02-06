@@ -1,4 +1,3 @@
-
 <nav class="navbar1">
 
     <a href="#/home" > Home </a>
@@ -12,10 +11,6 @@
 
     <span ng-show="User">
         <!--//change to user-->
-
-        <a ng-click="getUser(User)" href="/#/publicProfile">Public Profile</a>
-
-        &nbsp; &nbsp;
 
         <a href="#/profile"> {{User}}'s Account </a>
         <img src={{Picture}} >
@@ -31,7 +26,5 @@
     <span ng-show="!User">
         <a href="/connect/facebook/"> Login With Facebook </a>
     </span>
-
-
 
 </nav>
