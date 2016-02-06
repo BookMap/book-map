@@ -15,13 +15,11 @@ angular.module('controllers')
             $http.get('/api/books')
                 .then( function (res) {
                 $scope.bookCount = res.data.length;
-                var tempborrow = res.data.filter(  function(book) {
-                        return book.borrower;
+                 var tempborrow = res.data.filter(  (book) => {
+                    return book.borrower;
+
                     });
-                $scope.borrowCount = tempborrow.length;
+                 $scope.borrowCount = tempborrow.length;
             });
-
-
-
         }
     ]);

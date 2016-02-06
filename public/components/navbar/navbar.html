@@ -1,30 +1,83 @@
-<nav class="navbar1">
+ <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
 
-    <a href="#/home" > Home </a>
-    &nbsp; &nbsp;
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-    <a href="#/books"> All Books </a>
-    &nbsp; &nbsp;
 
-    <a href="#/users"> All Users</a>
-    &nbsp; &nbsp; &nbsp; &nbsp;
+            <a class="navbar-brand" href="#/">
+                <img src={{Picture}} >
+            </a>
+        </div>
 
-    <span ng-show="User">
-        <!--//change to user-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse"
+             id="bs-example-navbar-collapse-1">
 
-        <a href="#/profile"> {{User}}'s Account </a>
-        <img src={{Picture}} >
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/home" > Home                                                                     <span class="sr-only">(current)</span>
+                    </a>
+                </li>
 
-        &nbsp; &nbsp;
+                <li>
+                    <a href="#/books">Books
+                    </a>
+                </li>
 
-        <a ng-click ="fblogout()" href="/#/home">
-            Logout</a>
-    </span>
+                 <li>
+                    <a href="#/users">People</a>
+                </li>
+            </ul>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a ng-click="getUser(User)" href="#/publicProfile">
+                        <span ng-show="User">Public Profile</span>
+                    </a>
+                </li>
 
-    <span ng-show="!User">
-        <a href="/connect/facebook/"> Login With Facebook </a>
-    </span>
+                <li>
+                    <a href="#/profile">
+                        <span ng-show="User">
+                                {{User}}'s Account
+                        </span>
+                    </a>
+                </li>
 
+
+                <li>
+                    <a ng-click ="fblogout()" href="/#/home">
+                        <span ng-show="User">
+                                 Logout
+                        </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/connect/facebook/">
+                        <span ng-show="!User">
+                                Login With Facebook
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
+
+
+
+
