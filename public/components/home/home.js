@@ -18,7 +18,6 @@ angular.module('controllers')
                 var tempborrow = res.data.filter(  function(book) {
                         return book.borrower;
                     });
-                console.log (tempborrow.length, ' is borrowed ct');
                 $scope.borrowCount = tempborrow.length;
             });
 
