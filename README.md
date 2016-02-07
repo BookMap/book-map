@@ -12,8 +12,7 @@ The site relies on Facebook authentication and login.
 
 The server exposes REST data endpoints for all data operations, and serves front-end assets (js, html, css).
 
-
-###The Book Exchange
+##The Book Exchange
 
 - Includes a master/detail data structure, enabling the user to view either (1) a list of all titles or (2) a list of all physical book copies (some of which may share a title with other copies.)  Each title includes a summary for that title.  Each book record may also be viewed individually.  
 
@@ -32,6 +31,7 @@ The server exposes REST data endpoints for all data operations, and serves front
 - The app is available on GitHub at : https://github.com/BookMap/book-map
 
 
+##NPM Scripts
 The following run options are available via Package.json scripts, in the form of "npm run start", or one of the other run options listed below.
 
     "start": "node server.js",
@@ -40,14 +40,37 @@ The following run options are available via Package.json scripts, in the form of
     "temp": "eval $(cat .env) mocha",
     "test": "eval $(cat .env) gulp",
     "lint": "gulp lint"
+ 
+
+## .gitignore
+ 
+Ignore folders and files as required.  Our .gitignore included the following:
+
+node*
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
 
  
+## .env
  
-### Tests
+Create an .env file of the following form.  This will enable you to avoid posting information to a public resource
+
+APP_ID=     *INSERT HERE - NO QUOTES*
+APP_SECRET= *INSERT HERE - NO QUOTES*
+PORT=       *INSERT HERE - NO QUOTES*
+HOST=bookmap.com    *MODIFY*
+NODE_ENV=development
+DB_URI=     *INSERT HERE - NO QUOTES*
+
+
+  
+## Tests
 
 A. Test Preparations
 
-For the items listed below, it is reccommended to create them by yourself.
+For the items listed below, it is recommended to create them by yourself.
 
 * process.env.DB_URI: An URI for a test mongoDB in which new entries, modifications, and queries are stored. You can use a local Mongo database or a remote database from Mongolab.
 
