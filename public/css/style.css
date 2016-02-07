@@ -76,14 +76,6 @@ a:hover header {text-decoration: none;}
                 font-size:2rem;
 }
 
-/*.factbox.expander.clicker:hover {*/
-    /*-webkit-transform: transform: scale(1.1);*/
-    /*-moz-transform: transform: scale(1.1);*/
-    /*-o-transform: transform: scale(1.1);*/
-    /*-ms-transform: transform: scale(1.1);*/
-    /*transform: scale(1.1);*/
-/*}*/
-
 
 .page-header{ height: 30px;}
 
@@ -93,3 +85,9 @@ a:hover header {text-decoration: none;}
         padding:10px;}
 
 .searchbox{width: 300px;  display: inline-block;}
+
+.accountPicture {display: block-inline;}
+.publicProfile { display: block-inline;  margin: 0 100px; padding:30px;
+                height: 100px; width: 300px;  border-radius: 30px;
+                color: black; font-size: 2rem; background-color: palegreen;
+}

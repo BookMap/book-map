@@ -2,10 +2,14 @@
     <h3> Private Account Page for {{username}} </h3>
 </div>
 <br>
-<img src={{picture}} class="img-thumbnail img-responsive">
+<div class="accountPicture">
+    <span>
+        <img src={{picture}} class="img-thumbnail img-responsive">
+    </span>
+    <span class = "publicProfile">
+        <a ng-click="getUser(username)" href="/#/publicProfile">&nbsp; Switch to My Public Profile</a>
+    </span>
 
-<div>
-    <a ng-click="getUser(username)" href="/#/publicProfile">&nbsp; Switch to My Public Profile</a>
 </div>
 
 <br>
