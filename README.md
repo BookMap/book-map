@@ -1,3 +1,48 @@
+###The Book Exchange - A Technology Demonstration Project 
+
+Key Technologies
+- Express.js
+- Node
+- MongoDB and Mongoose
+- Facebook authentication/login
+
+The Book Exchange is a simple community book sharing app that enables users to enter the books they own, view the books that other community members own, and "borrow" and "return" those books with the click of the button.  (How users effect the physical exchange of books is outside the domain of this app.)
+
+The site relies on Facebook authentication and login.  
+
+The server exposes REST data endpoints for all data operations, and serves front-end assets (js, html, css).
+
+
+###The Book Exchange
+
+- Includes a master/detail data structure, enabling the user to view either (1) a list of all titles or (2) a list of all physical book copies (some of which may share a title with other copies.)  Each title includes a summary for that title.  Each book record may also be viewed individually.  
+
+- Each user may access his/her personal account page, which includes a Facebook picture, an "about me" field, a list of all books owned by the user, a list of all books lent by the user, and a list of all books borrowed by the user.
+
+- Each user may access the public profile page of any other user, which includes a public Facebook image and the book list of the user.
+
+- An administrative user may access individual user accounts. 
+
+- Angular is used to provide front end functionality.   
+
+- The app is lightly styled using Bootstrap and some minimal additional CSS.  
+
+- The app is deployed on Heroku : https://mybookmap.herokuapp.com/#/
+
+- The app is available on GitHub at : https://github.com/BookMap/book-map
+
+
+The following run options are available via Package.json scripts, in the form of "npm run start", or one of the other run options listed below.
+
+    "start": "node server.js",
+    "dev": "eval $(cat .env) nodemon server.js",
+    "dev-debug": "eval $(cat .env) node-debug server.js",
+    "temp": "eval $(cat .env) mocha",
+    "test": "eval $(cat .env) gulp",
+    "lint": "gulp lint"
+
+ 
+ 
 ### Tests
 
 A. Test Preparations
@@ -19,3 +64,4 @@ Public routes are all GET. Requests are made without any token included.
 Restricted routes are made with process.env.TEST_TOKEN included in req.token. Tests include: accessing a restricted route without a valid token, getting entries from the databse, creating a new entry in the database, patching entries saved in the database, deleting saved entries.
 
 * Restricted admin routes: (Saved for Whitney)
+ 
