@@ -3,13 +3,10 @@ angular.module( 'controllers' )
   function  ( $scope, $http ) {
 
     $http.get('/api/titles')
-      .then( function (res){
+      .then( function (res) {
         $scope.books = res.data.filter( function(book) {
           return (book.availability.length > 0);
         });
-      })
-      .catch( function (err){
-        console.log(err[0]);
       });
 
   }
