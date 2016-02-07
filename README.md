@@ -12,10 +12,10 @@ For the items listed below, it is reccommended to create them by yourself.
 
 2. Tests
 
-  * Public routes:
-  Public routes are all GET. Requests are made without any token included.
+* Public routes:
+Public routes are all GET. Requests are made without any token included.
 
-  * Restricted profile routes:
-  Restricted routes are made with process.env.TEST_TOKEN included in req.token. Tests include: accessing a restricted route without a valid token, getting entries from the databse, creating a new entry in the database, patching entries saved in the database, deleting saved entries.
+* Restricted profile routes:
+Restricted routes are made with process.env.TEST_TOKEN included in req.token. Tests include: accessing a restricted route without a valid token, getting entries from the databse, creating a new entry in the database, patching entries saved in the database, deleting saved entries.
 
-  * Restricted admin routes: (Saved for Whitney)
+* Restricted admin routes: (Saved for Whitney)
