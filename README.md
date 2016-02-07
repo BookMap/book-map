@@ -47,9 +47,13 @@ The following run options are available via Package.json scripts, in the form of
 Ignore folders and files as required.  Our .gitignore included the following:
 
 node*
+
 /node_modules
+
 npm-debug.log
+
 .DS_Store
+
 /*.env
 
  
@@ -58,10 +62,15 @@ npm-debug.log
 Create an .env file of the following form.  This will enable you to avoid posting information to a public resource
 
 APP_ID=     *INSERT HERE - NO QUOTES*
+
 APP_SECRET= *INSERT HERE - NO QUOTES*
+
 PORT=       *INSERT HERE - NO QUOTES*
+
 HOST=bookmap.com    *MODIFY*
+
 NODE_ENV=development
+
 DB_URI=     *INSERT HERE - NO QUOTES*
 
 
