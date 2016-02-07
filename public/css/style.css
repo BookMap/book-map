@@ -22,6 +22,9 @@ li {  list-style-type: none;  }
 
 a { text-decoration: none;}
 
+a header {text-decoration: none;}
+a:hover header {text-decoration: none;}
+
 .topnav {border: solid lightgrey 1px;
         background-color: white;}
 
