@@ -1,4 +1,4 @@
-<h1>The Book Exchange - A Technology Demonstration Project </h1>
+###The Book Exchange - A Technology Demonstration Project 
 
 Key Technologies
 - Express.js
@@ -13,7 +13,7 @@ The site relies on Facebook authentication and login.
 The server exposes REST data endpoints for all data operations, and serves front-end assets (js, html, css).
 
 
-<h1>The Book Exchange</h1>
+###The Book Exchange
 
 - Includes a master/detail data structure, enabling the user to view either (1) a list of all titles or (2) a list of all physical book copies (some of which may share a title with other copies.)  Each title includes a summary for that title.  Each book record may also be viewed individually.  
 
@@ -32,15 +32,6 @@ The server exposes REST data endpoints for all data operations, and serves front
 - The app is available on GitHub at : https://github.com/BookMap/book-map
 
 
-
-- create a meaningful and structured README, which will contain
-
-    - coding standards
-
-    - application structure
-
-    - build/test/run instructions
-
 The following run options are available via Package.json scripts, in the form of "npm run start", or one of the other run options listed below.
 
     "start": "node server.js",
@@ -50,50 +41,27 @@ The following run options are available via Package.json scripts, in the form of
     "test": "eval $(cat .env) gulp",
     "lint": "gulp lint"
 
+ 
+ 
+### Tests
 
+A. Test Preparations
 
-////delete below here
+For the items listed below, it is reccommended to create them by yourself.
 
-Your code should:
+* process.env.DB_URI: An URI for a test mongoDB in which new entries, modifications, and queries are stored. You can use a local Mongo database or a remote database from Mongolab.
 
-- be consistent across all files
+* process.env.TEST_TOKEN: A token that was issued for a valid facebook test user. It is used and included in the request headers for restricted route access. Please create a test facebook user, login to our app from your browser using this test facebook, grab the token saved under localStorage.token while you are still login with the test facebook in our app. Once you logout, the token will be cleared.
 
-- be contained in a clean/semantic application structure
+* process.env.TEST_USERID: A valid user ID that is included in some url queries: asking for a user's book inventory and return a book to an owner. To obtain this value, go to your mongoDB and pick one of the test user ids from the users collection.
 
-- include modularization of primary pieces of functionality
+B. Tests
 
-As a group you will need to:
+* Public routes:
+Public routes are all GET. Requests are made without any token included.
 
-- collaborate cross functionally
+* Restricted profile routes:
+Restricted routes are made with process.env.TEST_TOKEN included in req.token. Tests include: accessing a restricted route without a valid token, getting entries from the databse, creating a new entry in the database, patching entries saved in the database, deleting saved entries.
 
-- contribute equally
-
-- participate in a mock "sprint-review" at set time each day that simulates reporting demonstrable progress to stakeholders
-
-- Demonstrate at Tuesday sprint review, sprint 0 basic deployment and infrastructure in place. All teams members can develop and deploy to heroku with appropriate env config.
-
-- create an organization in GitHub, containing all members of your team
-
-- use a consistent branch naming convention (and include relevant feature branches, bug branches, etc)
-
-- ask questions and get help when you're stuck
-
-- create a meaningful and structured README, which will contain
-
-    - coding standards
-
-    - application structure
-
-    - build/test/run instructions
-
-As a bonus, you can:
-
-- add image uploads
-
-- integrate with Travis CI
-
-- add a "Share this" option
-
-- etc, etc, etc
-
-- be ultra creative, come up with cool stuff!!!
+* Restricted admin routes: (Saved for Whitney)
+ 

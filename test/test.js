@@ -88,7 +88,7 @@ describe('Restricted Router', () => {
 
   const request = chai.request(app);
 
-  it('should receive a status of 401 when token is not included', done => {
+  it('should receive a status of 401 when token is not included when trying to access one of the restricted routes', done => {
     request
       .get('/api/profile/borrowing')
       .end((err, res) => {
