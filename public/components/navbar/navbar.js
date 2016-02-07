@@ -20,8 +20,8 @@ angular.module('controllers')  //components
                                 + $rootScope.Id + '/picture?height=150&width=150';
 
                             })
-                            .catch(function(err){
-                              console.log(err,': Could not get picture or other info.');
+                            .catch(function(err)
+                            {console.log(err,': Could not get picture or other info.');
                             })
                     }
 
