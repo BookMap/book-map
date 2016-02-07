@@ -22,7 +22,6 @@ angular.module( 'controllers' )
           $scope.borrowedTitle = res.data.unique_book.title;
           book.borrower = true;
           $scope.borrowed = true;
-          console.log(res.data.unique_book.title);
         })
         .catch( function(err) {
           book.invalidBorrow = true;

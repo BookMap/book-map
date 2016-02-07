@@ -14,8 +14,9 @@
         <br>
         <ul class="list-group">
           <li ng-repeat="user in users | filter: { username: typeFilter}" >
-              <a  ng-href = "#/publicProfile/{{user._id}}"
-                  class="list-group-item">{{user.username}}</a></li>
+              <a ng-href="#/publicProfile/{{user._id}}"
+                  class="list-group-item">{{user.username}}</a>
+          </li>
         </ul>
     </div>
 </div>
