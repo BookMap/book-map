@@ -33,7 +33,6 @@ angular.module('controllers')
             });
 
 
-
       $http.get('/api/profile/books?search=lending')
             .then( function(res) {
               $scope.lending = res.data;

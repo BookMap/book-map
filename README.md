@@ -9,13 +9,13 @@ Key Technologies
 
 The Book Exchange is a simple community book sharing app that enables users to enter the books they own, view the books that other community members own, and "borrow" and "return" those books with the click of the button.  (How users effect the physical exchange of books is outside the domain of this app.)
 
-The site relies on Facebook authentication and login.  
+The site relies on Facebook authentication and login.
 
 The server exposes REST data endpoints for all data operations, and serves front-end assets (js, html, css).
 
 ##The Book Exchange
 
-- Includes a master/detail data structure, enabling the user to view either (1) a list of all titles or (2) a list of all physical book copies (some of which may share a title with other copies.)  Each title includes a summary for that title.  Each book record may also be viewed individually.  
+- Includes a master/detail data structure, enabling the user to view either (1) a list of all titles or (2) a list of all physical book copies (some of which may share a title with other copies.)  Each title includes a summary for that title.  Each book record may also be viewed individually.
 
 - Each user may access his/her personal account page, which includes a Facebook picture, an "about me" field, a list of all books owned by the user, a list of all books lent by the user, and a list of all books borrowed by the user.
 
@@ -23,9 +23,9 @@ The server exposes REST data endpoints for all data operations, and serves front
 
 - An administrative user may modify book titles such as deleting or adding fields.
 
-- Angular is used to provide front end functionality.   
+- Angular is used to provide front end functionality.
 
-- The app is lightly styled using Bootstrap and some minimal additional CSS.  
+- The app is lightly styled using Bootstrap and some minimal additional CSS.
 
 - The app is deployed on Heroku : https://mybookmap.herokuapp.com
 
