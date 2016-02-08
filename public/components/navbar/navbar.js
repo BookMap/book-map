@@ -15,15 +15,12 @@ angular.module('controllers')  //components
                             $rootScope.Id  = res.data.id;
                             $rootScope.About = res.data.about;
                             $rootScope.Admin = res.data.admin;
-                            $rootScope.Picture = 'https://graph.facebook.com/'
-                                + $rootScope.Id + '/picture?height=30&width=30';
-                            $rootScope.PictureBig = 'https://graph.facebook.com/'
-                                + $rootScope.Id + '/picture?height=150&width=150';
-
+                            $rootScope.Picture = 'https://graph.facebook.com/' + $rootScope.Id + '/picture?height=30&width=30';
+                            $rootScope.PictureBig = 'https://graph.facebook.com/' + $rootScope.Id + '/picture?height=150&width=150';
                             })
-                            .catch(function(err)
-                            {console.log(err,': Could not get picture or other info.');
-                            })
+                            .catch(function(err) {
+                              console.log(err,': Could not get picture or other info.');
+                            });
                     }
 
                     $scope.fblogout = function () {
@@ -34,5 +31,5 @@ angular.module('controllers')  //components
 
 
                 }]
-        }
+        };
     });

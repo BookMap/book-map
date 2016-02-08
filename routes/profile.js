@@ -33,7 +33,7 @@ router.post('/books', (req, res) => {
     return physicalBook.save();
   })
   .then( savedBook => {
-    return savedBook.populate('unique_book').execPopulate()
+    return savedBook.populate('unique_book').execPopulate();
   })
   .then ( book => {
     res.send(book);

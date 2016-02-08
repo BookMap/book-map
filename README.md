@@ -93,4 +93,5 @@ Public routes are all GET. Requests are made without any token included.
 * Restricted profile routes:
 Restricted routes are made with process.env.TEST_TOKEN included in req.token. Tests include: accessing a restricted route without a valid token, getting entries from the database, creating a new entry in the database, patching entries saved in the database, deleting saved entries.
 
-* Restricted admin routes: (Saved for Whitney)
+* Restricted admin routes:
+Restricted admin routes test for the presence of an authorized user.The previously used token is assumed to be a regular, unauthorized user, and the adminToken is the authorized user. To create an authorized user, manually change the admin field in the database of a user of your choosing by adding "admin: true". Then log in with that user, get the localStorage.token, and save the token in the .env file as ADMIN_TOKEN.

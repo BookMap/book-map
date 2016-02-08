@@ -63,7 +63,7 @@ angular.module('controllers')
              .then( function(res) {
                 $scope.borrowing.splice(index, 1);
              });
-      }
+      };
 
       $scope.delete = function(book, index) {
         $http({
@@ -76,7 +76,7 @@ angular.module('controllers')
         .catch( function(err) {
           console.log(err);
         });
-      }
+      };
 
       $scope.editAbout = function (about) {
         $http.patch('/api/profile', {
@@ -90,7 +90,7 @@ angular.module('controllers')
         }).catch (function (err) {
           $scope.aboutResponse = false;
         });
-      }
+      };
 
   }
 ]);

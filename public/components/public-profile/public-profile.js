@@ -16,9 +16,7 @@ angular.module( 'controllers' )
             .then(function(res){
                 $scope.name = res.data.username;
                 $scope.about = res.data.about;
-                $scope.picture = 'https://graph.facebook.com/'
-                    + ID + '/picture?height=150&width=150';
-
+                $scope.picture = 'https://graph.facebook.com/' + ID + '/picture?height=150&width=150';
             })
             .catch(function(err) {
             $scope.error = 'Could not retrieve user info';

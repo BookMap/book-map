@@ -27,7 +27,7 @@ angular.module( 'controllers' )
           book.invalidBorrow = true;
           $scope.notborrowed = true;
         });
-    }
+    };
 
   }
 ]);
