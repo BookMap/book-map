@@ -1,6 +1,6 @@
 ### Tests
 
-1. Test Preparations
+A. Test Preparations
 
 For the items listed below, it is reccommended to create them by yourself.
 
@@ -10,7 +10,7 @@ For the items listed below, it is reccommended to create them by yourself.
 
 * process.env.TEST_USERID: A valid user ID that is included in some url queries: asking for a user's book inventory and return a book to an owner. To obtain this value, go to your mongoDB and pick one of the test user ids from the users collection.
 
-2. Tests
+B. Tests
 
 * Public routes:
 Public routes are all GET. Requests are made without any token included.
