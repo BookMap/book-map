@@ -1,6 +1,6 @@
 angular.module('controllers')  //components
 
-    .directive('navbar', function(){
+    .directive('navbar', function() {
         return {
             restrict: 'E',
             templateUrl: 'components/navbar/navbar.html',
@@ -19,10 +19,10 @@ angular.module('controllers')  //components
                             $rootScope.PictureBig = 'https://graph.facebook.com/'
                                 + $rootScope.Id + '/picture?height=150&width=150';
 
-                        })
-                        .catch(function(err){
-                            console.log(err,': Could not get picture or other info.');
-                        })
+                            })
+                            .catch(function(err){
+                              console.log(err,': Could not get picture or other info.');
+                            })
                     }
 
                     $scope.fblogout = function () {
