@@ -33,10 +33,8 @@ The server exposes REST data endpoints for all data operations, and serves front
 
 
 ##NPM Scripts
-The following run options are available via Package.json scripts, in the form of "npm run start", or one of the other run options listed below.
- 
+
 The following run options are available via Package.json scripts, in the form of "npm start", or one of the other run options listed below.
->>>>>>> b0de8a44824801820dcff938c5988c065b02ae65
 
     "start": "node server.js",
     "dev": "eval $(cat .env) nodemon server.js",
@@ -44,10 +42,10 @@ The following run options are available via Package.json scripts, in the form of
     "temp": "eval $(cat .env) mocha",
     "test": "eval $(cat .env) gulp",
     "lint": "gulp lint"
- 
+
 
 ## .gitignore
- 
+
 Ignore folders and files as required.  Our .gitignore included the following:
 
 - node*
@@ -56,9 +54,9 @@ Ignore folders and files as required.  Our .gitignore included the following:
 - .DS_Store
 - /*.env
 
- 
+
 ## .env
- 
+
 Create an .env file of the following form.  This will enable you to avoid posting information to a public resource
 
 APP_ID=     *INSERT HERE - NO QUOTES*
@@ -74,13 +72,13 @@ NODE_ENV=development
 DB_URI=     *INSERT HERE - NO QUOTES*
 
 
-  
+
 ## Tests
 
 A. Test Preparations
 
 For the items listed below, it is recommended to create them before running tests.
- 
+
 * process.env.DB_URI: A URI for a test mongoDB in which new entries, modifications, and queries are stored. You can use a local Mongo database or a remote database from MongoLab.
 
 * process.env.TEST_TOKEN: A token that was issued for a valid Facebook test user. It is used and included in the request headers for restricted route access. Please create a test Facebook user, login to our app from your browser using this test Facebook, grab the token saved under localStorage.token while you are still logged in with the test Facebook in our app. Upon logout, the token will be cleared.
