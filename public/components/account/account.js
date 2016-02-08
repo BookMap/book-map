@@ -1,6 +1,6 @@
 angular.module('controllers')
 
-.controller( 'ProfileCtrl', [ '$scope', '$http', '$window',
+.controller( 'AccountCtrl', [ '$scope', '$http', '$window',
   function( $scope, $http, $window ) {
 
       if ( !$window.localStorage.token ) {
