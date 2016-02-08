@@ -4,11 +4,9 @@ const assert = chai.assert;
 const expect = chai.expect;
 
 const app = require('../app');
-const User = require('../models/User');
-const Book = require('../models/Book');
-const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
 const userId = process.env.TEST_USERID;
+const adminToken = process.env.ADMIN_TOKEN;
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -18,7 +16,8 @@ chai.use(chaiHttp);
 var testBook;
 
 describe('Public Router', () => {
-  before(done => {
+  before( function (done) {
+    this.timeout(5000);
     const db = mongoose.connection;
     mongoose.connect(process.env.DB_URI);
     db.on('open', () => {
@@ -175,7 +174,8 @@ describe('Restricted Router', () => {
       });
   });
 
-  it ('should successfully call GET for the requesting user profile', done => {
+  it ('should successfully call GET for the requesting user profile', function(done) {
+    this.timeout(5000);
     request
       .get('/api/profile')
       .set('token', token)
@@ -183,6 +183,31 @@ describe('Restricted Router', () => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.be.object;
+        done();
+      });
+  });
+});
+
+describe('the admin page', () => {
+
+  const request = chai.request(app);
+
+  it('should send a 401 if not admin', done => {
+    request
+      .get('/api/admin')
+      .set('token', token)
+      .end( (err, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
+
+  it('should send a 200 success if admin', done => {
+    request
+      .get('/api/admin')
+      .set('token', adminToken)
+      .end( (err, res) => {
+        expect(res).to.have.status(200);
         done();
       });
   });

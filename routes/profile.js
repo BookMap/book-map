@@ -3,7 +3,6 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
-const request = require('request');
 
 //POST new book
 router.post('/books', (req, res) => {
@@ -33,7 +32,7 @@ router.post('/books', (req, res) => {
     return physicalBook.save();
   })
   .then( savedBook => {
-    return savedBook.populate('unique_book').execPopulate()
+    return savedBook.populate('unique_book').execPopulate();
   })
   .then ( book => {
     res.send(book);
@@ -165,7 +164,8 @@ router.get('/', (req, res) => {
     var info = {
       username: user.username,
       id: user._id,
-      about: user.about
+      about: user.about,
+      admin: user.admin
     };
     res.send(info);
   })

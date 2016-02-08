@@ -22,19 +22,14 @@ app.config( [ '$routeProvider', '$httpProvider', function( $routeProvider, $http
           controller: 'UserListCtrl'
       })
 
-      .when('/publicProfile', {
-          templateUrl: 'components/public-profile/public-profile.html',
-          controller: 'PublicProfileCtrl'
-      })
-
       .when('/publicProfile/:id', {
           templateUrl: 'components/public-profile/public-profile.html',
           controller: 'PublicProfileCtrl'
       })
 
-      .when('/profile', {
-            templateUrl: 'components/profile/profile.html',
-            controller: 'ProfileCtrl'
+      .when('/account', {
+            templateUrl: 'components/account/account.html',
+            controller: 'AccountCtrl'
       })
 
       .when('/', {

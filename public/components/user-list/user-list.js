@@ -1,9 +1,8 @@
-
 angular.module( 'controllers' )
-.controller( 'UserListCtrl', [ '$rootScope','$scope', '$http',
-    function($rootScope, $scope, $http ) {
+.controller( 'UserListCtrl', ['$scope', '$http',
+    function($scope, $http ) {
 
-        $http.get( '/api/users' ).then( function( res ) {
+        $http.get( '/api/users' ).then( function(res) {
           $scope.users = res.data;
         });
 

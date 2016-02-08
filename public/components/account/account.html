@@ -6,6 +6,12 @@
     <div >
         <img src={{picture}} class="img-thumbnail img-responsive">
         <a class = "publicProfile"  href="/#/publicProfile/{{id}}">&nbsp; Switch to My Public Profile</a>
+        <form ng-submit="editAbout(about)" class="form-horizontal">
+          <textarea data-ng-model="about" class="form-control" rows="3"></textarea>
+          <button class="btn btn-sm btn-success">Edit "About Me"</button>
+        </form>
+        <div ng-show="aboutResponse">Successfully Updated</div>
+        <div ng-show="aboutResponse == false">Unsuccessful Update</div>
     </div>
 
 </div>

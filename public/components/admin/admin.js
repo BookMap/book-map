@@ -1,7 +1,7 @@
 angular.module( 'controllers' )
-.controller('AdminCtrl', [ '$scope', '$http',
+.controller('AdminCtrl', [ '$scope', '$http', '$window',
 
-  function( $scope, $http ) {
+  function( $scope, $http, $window ) {
 
     $http.get('/api/admin')
       .then( function(res) {
@@ -11,7 +11,7 @@ angular.module( 'controllers' )
         $http.get('api/titles?count=true')
           .then( function (res) {
             if (res.status === 200) $scope.titles = res.data;
-            else $scope.error = 'Could not get titles'
+            else $scope.error = 'Could not get titles';
           })
           .catch( function(err) {
             $scope.error = "Could not get titles: " + err;
@@ -23,7 +23,7 @@ angular.module( 'controllers' )
       $http({
         method: 'DELETE',
         url: '/api/titles/' + title._id
-      }).then( function(res) {
+      }).then( function (res) {
         if (res.status === 200) {
           $scope.titles.splice(index, 1);
         } else {
@@ -33,7 +33,7 @@ angular.module( 'controllers' )
       .catch( function(err) {
         $scope.error = 'Could not delete';
       });
-    }
+    };
 
     $scope.populate = function (title, index) {
       $scope.editId = title._id;
@@ -41,7 +41,7 @@ angular.module( 'controllers' )
       $scope.editAuthor = title.author;
       $scope.editSummary = title.summary;
       $scope.editIndex = index;
-    }
+    };
 
     $scope.edit = function (book_id, title, author, summary, index) {
       $http.patch(`api/titles/${book_id}`,
@@ -50,7 +50,7 @@ angular.module( 'controllers' )
                     author: author,
                     summary: summary
                   })
-      .then( function(res) {
+      .then( function (res) {
         if (res.status === 200) {
           $scope.titles[index].title = res.data.title;
           $scope.titles[index].author = res.data.author;
@@ -66,10 +66,8 @@ angular.module( 'controllers' )
       .catch( function(err) {
         $scope.error = 'Could not edit';
       });
-
-    }
+    };
 
   }
-
 
 ]);

@@ -8,7 +8,7 @@ var token = require('./lib/token');
 var login = require('./routes/login');
 var publicPath = path.join( __dirname, 'public' );
 var session = require( 'express-session' );
-var sekrit = process.env.APP_SECRET;
+var secret = process.env.APP_SECRET;
 var books = require('./routes/books');
 var titles = require('./routes/titles');
 var users = require('./routes/users');
@@ -17,7 +17,7 @@ var admin = require('./routes/admin');
 var bodyParser = require('body-parser');
 
 app.use( session({
-	secret: sekrit,
+	secret: secret,
 	resave: true,
 	saveUninitialized: true,
 	cookie: { secure: false }
@@ -39,7 +39,7 @@ function auth( req, res, next ) {
       		next();
     	})
 		.catch( err => {
-			res.status( 401 ).send( 'Not authorized' );
+			res.status(401).send( 'Not authorized' );
 		});
 }
 

@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
     find(req.query, req, res, 'availability');
   }
   else {
-    next();
+    return next();
   }
 });
 
@@ -45,7 +45,7 @@ router.get('/', (req, res, next) => {
           var count = 0;
           if (book._id === bookCounts[i]._id) {
             count = bookCounts[i].count;
-            i++;
+            if (i < bookCounts.length - 1) i++;
           }
           book.copies = count;
         });
@@ -56,17 +56,17 @@ router.get('/', (req, res, next) => {
     });
   }
   else {
-    next();
+    return next();
   }
 });
 
 //GET a specific unique book
 router.get('/', (req, res, next) => {
-  if (req.query._id && Object.keys(req.query).length === 1){
+  if (req.query._id && Object.keys(req.query).length === 1) {
     find(req.query, req, res, 'availability');
   }
   else {
-    next();
+    return next();
   }
 });
 
