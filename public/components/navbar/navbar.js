@@ -14,6 +14,7 @@ angular.module('controllers')  //components
                             $rootScope.User = res.data.username;
                             $rootScope.Id  = res.data.id;
                             $rootScope.About = res.data.about;
+                            $rootScope.Admin = res.data.admin;
                             $rootScope.Picture = 'https://graph.facebook.com/'
                                 + $rootScope.Id + '/picture?height=30&width=30';
                             $rootScope.PictureBig = 'https://graph.facebook.com/'

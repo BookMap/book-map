@@ -165,7 +165,8 @@ router.get('/', (req, res) => {
     var info = {
       username: user.username,
       id: user._id,
-      about: user.about
+      about: user.about,
+      admin: user.admin
     };
     res.send(info);
   })

@@ -3,15 +3,13 @@ angular.module( 'controllers' )
 
     function ($rootScope, $routeParams, $scope, $http) {
 
-        //get either the member id or if none the logged in user id
-        var ID = $routeParams.id || $rootScope.Id;
+        var ID = $routeParams.id;
 
         //get books for that profile id
         $http.get(`/api/books?owner=${ID}`)
             .then( function(res) {
                 $scope.books = res.data;
             });
-
 
         // get user name for that profile id
         $http.get('api/users/'+ ID)

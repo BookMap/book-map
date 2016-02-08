@@ -61,7 +61,6 @@ angular.module('controllers')
       $scope.returnBook = function(borrowedBook, index) {
         $http.patch(`api/profile/books/${borrowedBook._id}?request=return`)
              .then( function(res) {
-                console.log(res.data);
                 $scope.borrowing.splice(index, 1);
              });
       }
@@ -76,6 +75,20 @@ angular.module('controllers')
         })
         .catch( function(err) {
           console.log(err);
+        });
+      }
+
+      $scope.editAbout = function (about) {
+        $http.patch('/api/profile', {
+          about: about
+        }).then( function (res) {
+          if (res.status === 200) {
+            $scope.aboutResponse = true;
+          } else {
+            $scope.aboutResponse = false;
+          }
+        }).catch (function (err) {
+          $scope.aboutResponse = false;
         });
       }
 

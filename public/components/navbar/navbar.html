@@ -42,9 +42,17 @@
 
             <ul class="nav navbar-nav navbar-right">
 
+              <li ng-if="Admin">
+                  <a href="#/admin">
+                      <span>
+                              Admin
+                      </span>
+                  </a>
+              </li>
+
 
                 <li>
-                    <a href="#/profile">
+                    <a href="#/account">
                         <span ng-show="User">
                                 {{User}}'s Account
                         </span>
@@ -73,7 +81,3 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-
-
-

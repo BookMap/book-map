@@ -1,4 +1,4 @@
-body{background-color: whitesmoke;
+body {background-color: whitesmoke;
     padding:20px;
     margin: 20px;
     margin: 0 auto;}
@@ -46,7 +46,7 @@ a:hover header {text-decoration: none;}
 .gridthing { display: flex; flex-wrap: wrap;  }
 
 
-.surroundfactbox{ height:300px;
+.surroundfactbox { height:300px;
         width: 300px;
         text-align: center;
         margin: 0 auto;}
@@ -70,21 +70,21 @@ a:hover header {text-decoration: none;}
         transition: .5s ease-in-out;
 }
 
-.factbox:hover{
+.factbox:hover {
                 opacity: 0.8;
                 color: black;
                 font-size:2rem;
 }
 
 
-.page-header{ height: 30px;}
+.page-header { height: 30px;}
 
 .about {height: 50px;
         background-color: azure;
         border: 1px solid grey;
         padding:10px;}
 
-.searchbox{width: 300px;  display: inline-block;}
+.searchbox {width: 300px;  display: inline-block;}
 
 
 .publicProfile { float: right;
