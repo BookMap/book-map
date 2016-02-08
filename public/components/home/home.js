@@ -1,7 +1,7 @@
 angular.module('controllers')
 
-    .controller( 'HomeCtrl', [ '$rootScope','$scope', '$http', '$window',
-        function( $rootScope, $scope, $http, $window ) {
+    .controller( 'HomeCtrl', [ '$rootScope','$scope', '$http',
+        function( $rootScope, $scope, $http ) {
 
             $http.get( '/api/users' ).then( function (res) {
                   $scope.usersCount = res.data.length;

@@ -23,7 +23,7 @@ angular.module( 'controllers' )
       $http({
         method: 'DELETE',
         url: '/api/titles/' + title._id
-      }).then( function(res) {
+      }).then( function (res) {
         if (res.status === 200) {
           $scope.titles.splice(index, 1);
         } else {
@@ -50,7 +50,7 @@ angular.module( 'controllers' )
                     author: author,
                     summary: summary
                   })
-      .then( function(res) {
+      .then( function (res) {
         if (res.status === 200) {
           $scope.titles[index].title = res.data.title;
           $scope.titles[index].author = res.data.author;
@@ -66,10 +66,8 @@ angular.module( 'controllers' )
       .catch( function(err) {
         $scope.error = 'Could not edit';
       });
-
     };
 
   }
-
 
 ]);

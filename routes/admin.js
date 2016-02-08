@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const Book = require('../models/Book');
-const mongoose = require( 'mongoose' );
 
 router.get('/', (req, res) => {
   if (req.admin) {

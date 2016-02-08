@@ -4,9 +4,6 @@ const assert = chai.assert;
 const expect = chai.expect;
 
 const app = require('../app');
-const User = require('../models/User');
-const Book = require('../models/Book');
-const PhysicalBook = require('../models/PhysicalBook');
 const token = process.env.TEST_TOKEN;
 const userId = process.env.TEST_USERID;
 const adminToken = process.env.ADMIN_TOKEN;

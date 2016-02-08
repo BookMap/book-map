@@ -1,14 +1,14 @@
 angular.module( 'controllers' )
-.controller('PublicProfileCtrl', ['$rootScope', '$routeParams', '$scope','$http',
+.controller('PublicProfileCtrl', ['$routeParams', '$scope','$http',
 
-    function ($rootScope, $routeParams, $scope, $http) {
+    function ($routeParams, $scope, $http) {
 
         var ID = $routeParams.id;
 
         //get books for that profile id
         $http.get(`/api/books?owner=${ID}`)
-            .then( function(res) {
-                $scope.books = res.data;
+             .then( function(res) {
+               $scope.books = res.data;
             });
 
         // get user name for that profile id

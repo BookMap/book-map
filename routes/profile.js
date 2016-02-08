@@ -3,7 +3,6 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const PhysicalBook = require('../models/PhysicalBook');
 const mongoose = require( 'mongoose' );
-const request = require('request');
 
 //POST new book
 router.post('/books', (req, res) => {
